@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+'use strict'
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.sendFile('index.html');
-// });
+const express = require('express');
+const router = express.Router();
+
+// require routes
+const user = require('./user');
+
+// use routes
+router.use(user);
 
 module.exports = router;
