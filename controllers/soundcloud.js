@@ -4,8 +4,8 @@ const SoundCloudStrategy = require('passport-soundcloud').Strategy;
 // Users model
 const User = require('../models/users.js');
 
-const SOUNDCLOUD_CLIENT_ID = "078a10b8de37bb1ec1013502e17a8a95";
-const SOUNDCLOUD_CLIENT_SECRET = "2cf9ad5cb917379303e01bbc5864a01a";
+const SOUNDCLOUD_CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
+const SOUNDCLOUD_CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
