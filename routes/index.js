@@ -4,9 +4,9 @@ const express = require('express');
 const router = express.Router();
 
 // require routes
-const user = require('./user');
+const soundcloud = require('./soundcloud.js');
 
 // use routes
-router.use(user);
+router.use(soundcloud);
 
 module.exports = router;

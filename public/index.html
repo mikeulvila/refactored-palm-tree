@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/stylesheets/main.css" type="text/css">
   </head>
   <body ng-app="Capstone">
-    <nav class="navbar navbar-default">
+    <nav ng-controller="mainCtrl" class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -21,17 +21,8 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <form ng-submit="login()" class="navbar-form navbar-left">
-            <div class="form-group">
-              <input ng-model="login.email" type="email" class="form-control" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input ng-model="login.password" type="password" class="form-control" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a ui-sref="signup">Signup</a></li>
+            <li><a ng-click="login()" href="#"><img src="/images/connect-sc.png"></a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -45,6 +36,6 @@
     <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
     <script type="text/javascript" src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="/app/app.js"></script>
-    <script type="text/javascript" src="/app/controllers/signupCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/mainCtrl.js"></script>
   </body>
 </html>

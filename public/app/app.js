@@ -4,10 +4,10 @@
 
   app.config(function ($stateProvider, $urlRouterProvider) {
      $stateProvider
-      .state('signup', {
-        url: '/signup',
-        templateUrl: '/templates/signup.html',
-        controller: 'signupCtrl'
+      .state('index', {
+        url: '/',
+        templateUrl: 'index.html',
+        controller: 'mainCtrl'
       });
   }); // END CONFIG
 
