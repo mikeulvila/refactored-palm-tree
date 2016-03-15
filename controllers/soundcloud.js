@@ -4,8 +4,8 @@ const SoundCloudStrategy = require('passport-soundcloud').Strategy;
 // Users model
 const User = require('../models/users.js');
 
-const SOUNDCLOUD_CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
-const SOUNDCLOUD_CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
+const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
+const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -30,8 +30,8 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an accessToken, refreshToken, and SoundCloud
 //   profile), and invoke a callback with a user object.
 passport.use(new SoundCloudStrategy({
-    clientID: SOUNDCLOUD_CLIENT_ID,
-    clientSecret: SOUNDCLOUD_CLIENT_SECRET,
+    clientID: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
     callbackURL: "http://127.0.0.1:3000/auth/soundcloud/callback"
   },
   function(accessToken, refreshToken, profile, done) {

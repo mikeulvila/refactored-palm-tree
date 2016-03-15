@@ -1,18 +1,26 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const passport = require('passport');
 
-var routes = require('./routes/index');
+const routes = require('./routes/index');
 
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+const app = express();
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+const SESS_SECRET = process.env.SESSION_SECRET || 'supersecret';
+const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379'
+app.use(session({
+  secret: SESS_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  store: new RedisStore({
+    url: REDIS_URL
+  })
+}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -21,9 +29,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
 // routes
 app.use('/', routes);
 

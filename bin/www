@@ -3,33 +3,39 @@
 /**
  * Module dependencies.
  */
-const mongoose = require('mongoose');
-var app = require('../app');
-var debug = require('debug')('capstone-final:server');
-var http = require('http');
+const app = require('../app');
+const debug = require('debug')('capstone-final:server');
+const http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
+const mongoose = require('mongoose');
+const localMongoPort = 27017;
+const MONGO_PORT = process.env.MONGO_PORT || localMongoPort;
+const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
+const MONGO_USER = process.env.MONGO_USER || '';
+const MONGO_PASS = process.env.MONGO_PASS || '';
+const MONGO_AUTH = MONGO_USER ? `${MONGO_USER}:${MONGO_PASS}@` : '';
+const MONGO_URL = `mongodb://${MONGO_AUTH}${MONGO_HOST}:${MONGO_PORT}/capstone-final`;
 
 // wrap listen in mongoose callback to make sure mongo is connected
-mongoose.connect('mongodb://localhost:27017/capstone-final');
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+mongoose.connect(MONGO_URL);
+mongoose.connection.on('open', (err) => {
+  if (err) throw err;
   // we're connected to database
   console.log('MongoDB connected!');
   //start server
@@ -37,8 +43,6 @@ db.once('open', function() {
   server.on('error', onError);
   server.on('listening', onListening);
 });
-
-
 
 /**
  * Normalize a port into a number, string, or false.
