@@ -1,6 +1,7 @@
 // (function () {
   app.controller('mainCtrl', ['$scope', '$state', '$http', function ($scope, $state, $http) {
-    $scope.login = function () {
+
+    $scope.load = function () {
       console.log('http call');
        $http.get('/auth/soundcloud').then(function (response) {
           console.log('signup response>>>', response);

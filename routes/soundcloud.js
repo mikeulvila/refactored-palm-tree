@@ -18,7 +18,6 @@ require('../controllers/soundcloud.js');
 router.get('/auth/soundcloud',
   passport.authenticate('soundcloud'),
   function(req, res){
-    console.log('hitting authenticate path');
     // The request will be redirected to SoundCloud for authentication, so this
     // function will not be called.
   });
@@ -29,8 +28,9 @@ router.get('/auth/soundcloud',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 router.get('/auth/soundcloud/callback',
-  passport.authenticate('soundcloud', { failureRedirect: '/login' }),
+  passport.authenticate('soundcloud', { failureRedirect: '/#/signup' }),
   function(req, res) {
+    console.log('req.user>>>', req.user);
     res.redirect('/');
   });
 

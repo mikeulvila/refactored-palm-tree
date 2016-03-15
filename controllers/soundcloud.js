@@ -15,10 +15,12 @@ const SOUNDCLOUD_CLIENT_SECRET = "2cf9ad5cb917379303e01bbc5864a01a";
 //   have a database of user records, the complete SoundCloud profile is
 //   serialized and deserialized.
 passport.serializeUser(function(user, done) {
+  console.log('user serialize>>>', user);
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
+  console.log('user deserialize>>>', obj);
   done(null, obj);
 });
 
@@ -33,6 +35,9 @@ passport.use(new SoundCloudStrategy({
     callbackURL: "http://127.0.0.1:3000/auth/soundcloud/callback"
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log('accessToken>>>', accessToken);
+    console.log('refreshToken>>>', refreshToken);
+    console.log('profile>>>', profile);
     // asynchronous verification, for effect...
     process.nextTick(function () {
 

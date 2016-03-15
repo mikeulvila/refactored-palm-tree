@@ -8,6 +8,11 @@
         url: '/',
         templateUrl: 'index.html',
         controller: 'mainCtrl'
+      })
+      .state('signup', {
+        url: '/signup',
+        templateUrl: 'templates/signup.html',
+        controller: 'mainCtrl'
       });
   }); // END CONFIG
 
