@@ -1,6 +1,9 @@
 // public/app/controllers/MainCtrl.js
-angular.module('MainCtrl', []).controller('MainController', ['$scope', '$state', function($scope, $state) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $state, User) {
 
-    $scope.tagline = 'To the moon and back!';
+    const UserObj = User.getUserObj().then((user) => {
 
-}]);
+    console.log('UserObj>>>', user);
+    })
+
+});

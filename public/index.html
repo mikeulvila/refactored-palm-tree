@@ -29,11 +29,8 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-
     <!-- route partials -->
     <div ui-view></div>
-    <button id="next">Next</button>
-    <iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites" width="50%" height="465" scrolling="no" frameborder="no"></iframe>
 
     <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
@@ -45,12 +42,14 @@
     <!-- angular controllers -->
     <script type="text/javascript" src="/app/controllers/MainCtrl.js"></script>
     <!-- angular services -->
+    <script type="text/javascript" src="/app/services/UserService.js"></script>
 
 
     <!-- HTML5 WIDGET API -->
-    <script type="text/javascript" src="javascripts/soundcloud.player.api.js"></script>
-    <script type="text/javascript" src="/javascripts/widget.js"></script>
-    <script type="text/javascript" src="/javascripts/script.js"></script>
+    <!-- <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script> -->
+    <!-- <script type="text/javascript" src="javascripts/soundcloud.player.api.js"></script> -->
+    <!-- <script type="text/javascript" src="/javascripts/widget.js"></script> -->
+    <!-- <script type="text/javascript" src="/javascripts/script.js"></script> -->
 
   </body>
 </html>

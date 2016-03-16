@@ -3,11 +3,6 @@ angular.module('appRoutes', [])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-          .state('index', {
-            url: '/',
-            templateUrl: 'index.html',
-            controller: 'MainController'
-          })
           .state('signup', {
             url: '/signup',
             templateUrl: 'templates/signup.html',
