@@ -1,12 +1,13 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // mongoose schema
-const userSchema = mongoose.Schema({
-  username: String,
-  email: String,
-  passhash: String,
+const userSchema = new Schema({
+  _id: Number,
+  access_token: String,
+  displayName: String,
   joined_at: {
     type: Date,
     default: Date.now

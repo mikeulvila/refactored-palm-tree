@@ -1,17 +1,6 @@
-// (function () {
-  app.controller('mainCtrl', ['$scope', '$state', '$http', function ($scope, $state, $http) {
+// public/app/controllers/MainCtrl.js
+angular.module('MainCtrl', []).controller('MainController', ['$scope', '$state', function($scope, $state) {
 
-    $scope.load = function () {
-      console.log('http call');
-       $http.get('/auth/soundcloud').then(function (response) {
-          console.log('signup response>>>', response);
-       }, function (err) {
-          if (err) throw err;
-       });
-    };
+    $scope.tagline = 'To the moon and back!';
 
-
-
-
-  }]); //END CONTROLLER
-// }()); //END IIFE
+}]);

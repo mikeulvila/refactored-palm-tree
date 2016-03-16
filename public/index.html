@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/stylesheets/main.css" type="text/css">
   </head>
   <body ng-app="Capstone">
-    <nav ng-controller="mainCtrl" class="navbar navbar-default">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -28,15 +28,29 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
+
     <!-- route partials -->
     <div ui-view></div>
-
-
+    <button id="next">Next</button>
+    <iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites" width="50%" height="465" scrolling="no" frameborder="no"></iframe>
 
     <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
     <script type="text/javascript" src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- angular app.js -->
     <script type="text/javascript" src="/app/app.js"></script>
-    <script type="text/javascript" src="/app/controllers/mainCtrl.js"></script>
+    <!-- angular routes -->
+    <script type="text/javascript" src="/app/appRoutes.js"></script>
+    <!-- angular controllers -->
+    <script type="text/javascript" src="/app/controllers/MainCtrl.js"></script>
+    <!-- angular services -->
+
+
+    <!-- HTML5 WIDGET API -->
+    <script type="text/javascript" src="javascripts/soundcloud.player.api.js"></script>
+    <script type="text/javascript" src="/javascripts/widget.js"></script>
+    <script type="text/javascript" src="/javascripts/script.js"></script>
+
   </body>
 </html>

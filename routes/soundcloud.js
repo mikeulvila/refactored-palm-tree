@@ -9,34 +9,18 @@ const User = require('../models/users.js');
 
 require('../controllers/soundcloud.js');
 
-// GET /auth/soundcloud
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in SoundCloud authentication will involve
-//   redirecting the user to soundcloud.com.  After authorization, SoundCloud
-//   will redirect the user back to this application at
-//   /auth/soundcloud/callback
 router.get('/auth/soundcloud',
-  passport.authenticate('soundcloud'),
-  function(req, res){
-    // The request will be redirected to SoundCloud for authentication, so this
-    // function will not be called.
-  });
+  passport.authenticate('soundcloud'));
 
-// GET /auth/soundcloud/callback
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
 router.get('/auth/soundcloud/callback',
-  passport.authenticate('soundcloud', { failureRedirect: '/#/signup' }),
-  function(req, res) {
-    console.log('req.user>>>', req.user);
-    res.redirect('/');
-  });
+  passport.authenticate('soundcloud', {
+    failureRedirect: '/#/signup',
+    successRedirect: '/#/account'
+  }));
 
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/');
+  res.redirect('/#/signup');
 });
 
 // Simple route middleware to ensure user is authenticated.
@@ -45,8 +29,9 @@ router.get('/logout', function(req, res){
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
 function ensureAuthenticated(req, res, next) {
+  console.log('reqIsAuth', req);
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  res.redirect('/#/signup')
 }
 
 module.exports = router;

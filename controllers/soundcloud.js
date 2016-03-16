@@ -3,53 +3,56 @@ const passport = require('passport');
 const SoundCloudStrategy = require('passport-soundcloud').Strategy;
 // Users model
 const User = require('../models/users.js');
-
+// env variables to keep secret
 const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 
-// Passport session setup.
-//   To support persistent login sessions, Passport needs to be able to
-//   serialize users into and deserialize users out of the session.  Typically,
-//   this will be as simple as storing the user ID when serializing, and finding
-//   the user by ID when deserializing.  However, since this example does not
-//   have a database of user records, the complete SoundCloud profile is
-//   serialized and deserialized.
+// used to serialize the user for the session
 passport.serializeUser(function(user, done) {
-  console.log('user serialize>>>', user);
-  done(null, user);
+    done(null, user._id);
 });
 
-passport.deserializeUser(function(obj, done) {
-  console.log('user deserialize>>>', obj);
-  done(null, obj);
+// used to deserialize the user
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
 });
 
-
-// Use the SoundCloudStrategy within Passport.
-//   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, an accessToken, refreshToken, and SoundCloud
-//   profile), and invoke a callback with a user object.
+// soundcloud strategy for passport
 passport.use(new SoundCloudStrategy({
     clientID: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
     callbackURL: "http://127.0.0.1:3000/auth/soundcloud/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log('accessToken>>>', accessToken);
-    console.log('refreshToken>>>', refreshToken);
     console.log('profile>>>', profile);
-    // asynchronous verification, for effect...
+    console.log('accessToken>>>', accessToken);
+    // asynchronous verification
     process.nextTick(function () {
+      // find user in database from soundcloud id
+      User.findOne({'_id': profile.id}, (err, user) =>{
+        if (err)
+          return done(err);
+        if (user) {
+          return done(null, user); //user found
+        } else {
+          // create new user if not found
+          const newUser = new User();
+            newUser._id = profile.id;
+            newUser.access_token = accessToken;
+            newUser.displayName = profile.displayName;
 
-      // To keep the example simple, the user's SoundCloud profile is returned
-      // to represent the logged-in user.  In a typical application, you would
-      // want to associate the SoundCloud account with a user record in your
-      // database, and return that user instead.
-      return done(null, profile);
+            // save new user to database
+            newUser.save((err, user) => {
+              if (err) throw err;
+
+
+              // successful return new user
+              return done(null, user);
+            });
+          }
+      });
     });
   }
 ));
-module.exports.signup = function (req, res) {
-  console.log('req.body>>>', req.body);
-   /* body... */
-};
