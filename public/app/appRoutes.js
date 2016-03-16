@@ -13,5 +13,10 @@ angular.module('appRoutes', [])
             templateUrl: 'templates/account.html',
             controller: 'MainController'
           })
+          .state('edit-profile', {
+            url: '/edit-profile',
+            templateUrl: 'templates/edit-profile.html',
+            controller: 'EditProfileController'
+          })
 
 }]);
