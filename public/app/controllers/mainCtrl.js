@@ -1,8 +1,13 @@
 // public/app/controllers/MainCtrl.js
-angular.module('MainCtrl', []).controller('MainController', function($scope, $state, User) {
+angular.module('Capstone')
+  .controller('MainController', ['$scope', '$state', 'User',
+    function($scope, $state, User) {
 
-    User.getUserObj().then((user) => {
-      $scope.user = user.data;
-    });
+      User.getUserObj()
+        .then(function(user) {
+          $scope.user = user.data;
+        }, function (error) {
+          console.log(error);
+        });
 
-});
+}]);

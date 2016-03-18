@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/stylesheets/main.css" type="text/css">
   </head>
   <body ng-app="Capstone">
-    <nav class="navbar navbar-default">
+    <nav ng-controller="MainController" class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -22,9 +22,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a ui-sref="edit-profile">Edit Profile</a></li>
-            <li><a href="/logout">Logout</a></li>
-            <li><a href="/auth/soundcloud"><img src="/images/connect-sc.png"></a></li>
+            <li ng-show="user"><a ui-sref="edit-profile">Edit Profile</a></li>
+            <li ng-show="user"><a href="/auth/logout">Logout</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -36,12 +35,15 @@
     <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
     <script type="text/javascript" src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- 3rd party libraries -->
+    <script src="/vendor/ng-file-upload/ng-file-upload.min.js"></script>
     <!-- angular app.js -->
     <script type="text/javascript" src="/app/app.js"></script>
     <!-- angular routes -->
     <script type="text/javascript" src="/app/appRoutes.js"></script>
     <!-- angular controllers -->
     <script type="text/javascript" src="/app/controllers/MainCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/ProfileCtrl.js"></script>
     <script type="text/javascript" src="/app/controllers/EditProfileCtrl.js"></script>
     <!-- angular services -->
     <script type="text/javascript" src="/app/services/UserService.js"></script>

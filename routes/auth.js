@@ -7,7 +7,7 @@ const passport = require('passport');
 // model
 const User = require('../models/users.js');
 
-require('../controllers/user.js');
+require('../controllers/auth.js');
 
 //===============================================
 //  User Auth Routes
@@ -17,19 +17,28 @@ router.get('/auth/soundcloud',
 
 router.get('/auth/soundcloud/callback',
   passport.authenticate('soundcloud', {
-    failureRedirect: '/#/signup',
-    successRedirect: '/#/account'
+    failureRedirect: '/#/home',
+    successRedirect: '/#/profile'
   }));
 
-router.get('/logout', function(req, res){
+router.get('/auth/logout', (req, res) => {
   req.logout();
-  res.redirect('/#/signup');
+  res.redirect('/#/home');
 });
 
 // GET USER OBJECT
 router.get('/user', (req, res) => {
+  console.log('got user for client');
   res.json(req.user);
 });
+
+//===============================================
+//  UPDATE PROFILE
+//===============================================
+router.post('/api/updateProfile', (req, res) => {
+  console.log('updateProfile', req.body);
+  res.sendStatus(200);
+})
 
 
 //  Simple route middleware to ensure user is authenticated.

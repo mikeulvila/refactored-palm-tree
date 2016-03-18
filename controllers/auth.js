@@ -26,8 +26,8 @@ passport.use(new SoundCloudStrategy({
     callbackURL: "http://127.0.0.1:3000/auth/soundcloud/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log('profile>>>', profile);
-    console.log('accessToken>>>', accessToken);
+    const soundCloudProfile = profile._json;
+    console.log('profile>>>', soundCloudProfile);
     // asynchronous verification
     process.nextTick(function () {
       // find user in database from soundcloud id
@@ -42,12 +42,9 @@ passport.use(new SoundCloudStrategy({
             newUser._id = profile.id;
             newUser.access_token = accessToken;
             newUser.displayName = profile.displayName;
-
             // save new user to database
             newUser.save((err, user) => {
               if (err) throw err;
-
-
               // successful return new user
               return done(null, user);
             });

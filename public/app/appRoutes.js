@@ -1,22 +1,27 @@
 // public/app/appRoutes.js
-angular.module('appRoutes', [])
-    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+angular.module('Capstone')
+    .config(['$stateProvider', '$urlRouterProvider',
+      function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-          .state('signup', {
-            url: '/signup',
-            templateUrl: 'templates/signup.html',
+          .state('home', {
+            url: '/',
+            templateUrl: 'templates/home.html',
             controller: 'MainController'
           })
-          .state('account', {
-            url: '/account',
-            templateUrl: 'templates/account.html',
+          .state('profile', {
+            url: '/profile',
+            templateUrl: 'templates/profile.html',
             controller: 'MainController'
           })
           .state('edit-profile', {
             url: '/edit-profile',
             templateUrl: 'templates/edit-profile.html',
             controller: 'EditProfileController'
-          })
+          });
+
+        // For any unmatched url, redirect to /
+        $urlRouterProvider.otherwise('/');
+
 
 }]);

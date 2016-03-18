@@ -7,7 +7,30 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   _id: Number,
   access_token: String,
-  displayName: String,
+  refresh_token: String,
+  full_name: String,
+  bio: String,
+  avatar_url: String,
+  city: String,
+  country: String,
+  uri: String,
+  genres: {
+    pop: Boolean,
+    rock: Boolean,
+    latin: Boolean,
+    jazz: Boolean,
+    blues: Boolean,
+    country: Boolean,
+    dance: Boolean,
+    rap: Boolean,
+    folk: Boolean,
+    classical: Boolean
+  },
+  strengths: {
+    lyric: Number,
+    melody: Number,
+    music: Number
+  },
   joined_at: {
     type: Date,
     default: Date.now
