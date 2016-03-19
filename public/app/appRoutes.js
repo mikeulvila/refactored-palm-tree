@@ -12,7 +12,7 @@ angular.module('Capstone')
           .state('profile', {
             url: '/profile',
             templateUrl: 'templates/profile.html',
-            controller: 'MainController'
+            controller: 'ProfileController'
           })
           .state('edit-profile', {
             url: '/edit-profile',

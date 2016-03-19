@@ -9,7 +9,7 @@ const userSchema = new Schema({
   access_token: String,
   refresh_token: String,
   full_name: String,
-  bio: String,
+  description: String,
   avatar_url: String,
   city: String,
   country: String,
@@ -27,7 +27,7 @@ const userSchema = new Schema({
     classical: Boolean
   },
   strengths: {
-    lyric: Number,
+    lyrics: Number,
     melody: Number,
     music: Number
   },

@@ -39,9 +39,16 @@ passport.use(new SoundCloudStrategy({
         } else {
           // create new user if not found
           const newUser = new User();
-            newUser._id = profile.id;
+            newUser._id = soundCloudProfile.id;
             newUser.access_token = accessToken;
-            newUser.displayName = profile.displayName;
+            newUser.refresh_token = refreshToken;
+            newUser.full_name = soundCloudProfile.full_name;
+            newUser.description = soundCloudProfile.description;
+            newUser.avatar_url = soundCloudProfile.avatar_url;
+            newUser.city = soundCloudProfile.city;
+            newUser.country = soundCloudProfile.country;
+            newUser.uri = soundCloudProfile.uri;
+
             // save new user to database
             newUser.save((err, user) => {
               if (err) throw err;
