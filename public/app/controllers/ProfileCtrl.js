@@ -3,11 +3,11 @@ angular.module('Capstone')
   .controller('ProfileController', ['$scope', '$state', 'User',
     function($scope, $state, User) {
 
-      User.getUserObj()
+      User.getUser()
         .then(function(user) {
           $scope.user = user.data;
-        }, function (error) {
-          console.log(error);
+        }).catch(function (error) {
+          $state.go('home');
         });
 
 }]);

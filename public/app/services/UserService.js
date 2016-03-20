@@ -5,7 +5,7 @@ angular.module('Capstone')
 
           return {
               // get user json object
-              getUserObj: function() {
+              getUser: function() {
                 return $http.get('/api/user');
               },
               // update profile

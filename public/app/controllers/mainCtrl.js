@@ -2,13 +2,11 @@
 angular.module('Capstone')
   .controller('MainController', ['$scope', '$state', 'User',
     function($scope, $state, User) {
-
-      User.getUserObj()
+      User.getUser()
         .then(function(user) {
           $scope.user = user.data;
-          console.log('$scope.user', $scope.user);
-        }, function (error) {
-          console.log('error>>>', error);
+        }).catch(function (error) {
+
         });
 
 }]);

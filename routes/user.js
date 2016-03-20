@@ -15,19 +15,13 @@ const userCtrl = require('../controllers/userCtrl.js');
 
 // GET USER OBJECT
 router.get('/user', ensureAuthenticated, function (req, res) {
-  console.log('req.user>>>', req.user);
   res.json(req.user);
 });
 
 function ensureAuthenticated (req, res, next) {
-  console.log('got to ensureAuthenticated')
-  if (req.isAuthenticated()) {
-    console.log('getting through Authenticated')
-    return next();
-  } else {
-    console.log('got to else redirect')
-    res.redirect('/#/');
-  }
+  if (req.isAuthenticated()) { return next(); }
+  // else send 401 unauthorized
+  res.status(401).json('Please connect with SoundCloud');
 }
 
 module.exports = router;
