@@ -2,7 +2,7 @@
 const passport = require('passport');
 const SoundCloudStrategy = require('passport-soundcloud').Strategy;
 // Users model
-const User = require('../models/users.js');
+const User = require('../models/User.js');
 // env variables to keep secret
 const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;

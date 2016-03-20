@@ -14,6 +14,15 @@ const RedisStore = require('connect-redis')(session);
 const SESS_SECRET = process.env.SESSION_SECRET || 'supersecret';
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379'
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+// set up Redis storage
 app.use(session({
   secret: SESS_SECRET,
   resave: false,
@@ -22,18 +31,11 @@ app.use(session({
     url: REDIS_URL
   })
 }));
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, 'public')));
 // routes
 app.use('/', routes);
 

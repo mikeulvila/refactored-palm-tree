@@ -6,8 +6,9 @@ angular.module('Capstone')
       User.getUserObj()
         .then(function(user) {
           $scope.user = user.data;
+          console.log('$scope.user', $scope.user);
         }, function (error) {
-          console.log(error);
+          console.log('error>>>', error);
         });
 
 }]);
