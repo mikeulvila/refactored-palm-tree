@@ -13,8 +13,10 @@ const userSchema = new Schema({
   avatar_url: String,
   city: String,
   country: String,
-  uri: String,
+  user_uri: String,
   tracks_uri: String,
+  likes: Array,
+  matches: Array,
   genres: {
     pop: Boolean,
     rock: Boolean,

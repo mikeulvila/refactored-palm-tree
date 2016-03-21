@@ -7,7 +7,6 @@ angular.module('Capstone')
       User.getUserTracks()
         .then(function(tracks){
           tracksArray = tracks.data;
-          console.log('tracksArray', tracksArray);
           $scope.iframeSrc = getiframeSrc(tracksArray[0].id);
         }).catch(function(error){
 
@@ -21,8 +20,9 @@ angular.module('Capstone')
       };
 
       function getiframeSrc (id) {
-        return 'https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/'+id;
+        return 'https://w.soundcloud.com/player/?auto_play=true&show_user=false&show_artwork=false&url=http://api.soundcloud.com/tracks/'+id;
       };
+
 
       // var widgetIframe = document.getElementById('sc-widget'),
       // widget       = SC.Widget(widgetIframe),

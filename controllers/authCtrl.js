@@ -47,7 +47,7 @@ passport.use(new SoundCloudStrategy({
             newUser.avatar_url = soundCloudProfile.avatar_url;
             newUser.city = soundCloudProfile.city;
             newUser.country = soundCloudProfile.country;
-            newUser.uri = soundCloudProfile.uri;
+            newUser.user_uri = soundCloudProfile.uri;
             newUser.tracks_uri = soundCloudProfile.uri + '/tracks';
 
             // save new user to database
