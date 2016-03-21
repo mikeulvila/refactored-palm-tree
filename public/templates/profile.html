@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-sm-6'>
       <img src="{{ user.avatar_url }}">
-      <h1>{{ user.full_name }}</h1>
+      <h1>{{ user.username }}</h1>
       <p>{{ user.description }}</p>
       <ul>
         <li><h4>_id: {{ user._id}}</h4></li>
@@ -11,6 +11,7 @@
         <li><h4>city: {{ user.city}}</h4></li>
         <li><h4>country: {{ user.country}}</h4></li>
         <li><h4>uri: {{ user.uri}}</h4></li>
+        <li><h4>tracks_uri: {{ user.tracks_uri}}</h4></li>
       </ul>
     </div>
   </div>

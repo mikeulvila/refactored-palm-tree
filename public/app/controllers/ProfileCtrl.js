@@ -9,5 +9,4 @@ angular.module('Capstone')
         }).catch(function (error) {
           $state.go('home');
         });
-
 }]);

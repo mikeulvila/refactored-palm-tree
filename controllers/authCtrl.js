@@ -42,12 +42,13 @@ passport.use(new SoundCloudStrategy({
             newUser._id = soundCloudProfile.id;
             newUser.access_token = accessToken;
             newUser.refresh_token = refreshToken;
-            newUser.full_name = soundCloudProfile.full_name;
+            newUser.username = soundCloudProfile.username;
             newUser.description = soundCloudProfile.description;
             newUser.avatar_url = soundCloudProfile.avatar_url;
             newUser.city = soundCloudProfile.city;
             newUser.country = soundCloudProfile.country;
             newUser.uri = soundCloudProfile.uri;
+            newUser.tracks_uri = soundCloudProfile.uri + '/tracks';
 
             // save new user to database
             newUser.save((err, user) => {

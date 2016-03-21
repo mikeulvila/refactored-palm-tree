@@ -1,11 +1,15 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-
+const request = require('request');
+const _ = require('lodash');
 // controller
 const userCtrl = require('../controllers/userCtrl.js');
 // MODEL
 const User = require('../models/User.js');
+// env
+const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
+const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 
 // GET     /forums              ->  index
 // GET     /forums/new          ->  new
@@ -16,8 +20,30 @@ const User = require('../models/User.js');
 // DELETE  /forums/:forum       ->  destroy
 
 // GET USER OBJECT
-router.get('/user', ensureAuthenticated, function (req, res) {
+router.get('/user', ensureAuthenticated, (req, res) => {
   res.json(req.user);
+});
+
+router.get('/user/tracks', ensureAuthenticated, (req, res) => {
+  const lookupTracksAPI = req.user.tracks_uri + '?client_id=' + CLIENT_ID;
+  // api request
+  request.get(lookupTracksAPI, (err, response) => {
+    if (err) {
+      res.sendStatus(404);
+    } else {
+      let filteredTracksArray = [];
+      const tracksArray = JSON.parse(response.body);
+      _.forEach(tracksArray, (v) => {
+        filteredTracksArray.push({
+          id: v.id,
+          title: v.title,
+          user_id: v.user_id,
+          uri: v.uri
+        });
+      });
+      res.json(filteredTracksArray);
+    }
+  });
 });
 
 // UPDATE USER OBJECT
