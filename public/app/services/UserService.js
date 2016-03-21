@@ -9,14 +9,8 @@ angular.module('Capstone')
                 return $http.get('/api/user');
               },
               // update profile
-              updateProfile: function(data) {
-                $http.post('/api/updateProfile', data)
-                  .then(function() {
-                    console.log('getting to then function')
-                    $state.go('account');
-                  }, function(error) {
-                    console.log(error);
-                  });
+              updateUser: function(id, user) {
+                return $http.put('/api/user/'+id, user);
               }
 
 

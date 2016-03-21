@@ -3,16 +3,23 @@ angular.module('Capstone')
   .controller('EditProfileController', ['$scope', '$state', 'User', 'Upload',
     function($scope, $state, User, Upload) {
 
-      User.getUserObj()
+      User.getUser()
         .then(function(user) {
           $scope.user = user.data;
-        }, function (error) {
-          console.log(error);
+        }).catch(function (error) {
+
         });
 
-      // $scope.updateProfile = function(){
-      //   User.updateProfile($scope.user);
-      // }
+      $scope.updateProfile = function(){
+        var user = $scope.user;
+        var id = user._id;
+        User.updateUser(id, user)
+          .then(function() {
+            $state.go('profile');
+          }).catch(function(error) {
+
+          });
+      };
 
       // $scope.$watch(function() {
       //   return $scope.file;

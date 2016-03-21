@@ -27,12 +27,4 @@ router.get('/auth/logout', (req, res) => {
   res.redirect('/#/home');
 });
 
-//===============================================
-//  UPDATE PROFILE
-//===============================================
-router.post('/api/updateProfile', (req, res) => {
-  console.log('updateProfile', req.body);
-  res.sendStatus(200);
-})
-
 module.exports = router;
