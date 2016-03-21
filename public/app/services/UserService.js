@@ -11,6 +11,10 @@ angular.module('Capstone')
               // update profile
               updateUser: function(id, user) {
                 return $http.put('/api/user/'+id, user);
+              },
+              // get user tracks
+              getUserTracks: function() {
+                return $http.get('/api/user/tracks');
               }
 
 

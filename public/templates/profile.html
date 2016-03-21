@@ -14,5 +14,16 @@
         <li><h4>tracks_uri: {{ user.tracks_uri}}</h4></li>
       </ul>
     </div>
+    <div class='col-sm-6'>
+      <h1>Tracks</h1>
+      <div ng-repeat='track in tracks'>
+        <div>
+          <h3>title: {{ track.title }}</h3>
+          <p>id: {{ track.id }}</p>
+          <p>uri: {{ track.uri }}</p>
+          <p>user_id: {{ track.user_id }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -9,4 +9,12 @@ angular.module('Capstone')
         }).catch(function (error) {
           $state.go('home');
         });
+
+      User.getUserTracks()
+        .then(function(tracks) {
+          $scope.tracks = tracks.data;
+          console.log('$scope.tracks', $scope.tracks);
+        }).catch(function(error) {
+          console.log('getUserTracks error>>>', error);
+        });
 }]);
