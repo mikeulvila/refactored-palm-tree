@@ -18,6 +18,11 @@ angular.module('Capstone')
             url: '/edit-profile',
             templateUrl: 'templates/edit-profile.html',
             controller: 'EditProfileController'
+          })
+          .state('soundcloud-player', {
+            url: '/soundcloud-player',
+            templateUrl: 'templates/soundcloud-player.html',
+            controller: 'SoundcloudPlayerController'
           });
 
         // For any unmatched url, redirect to /
