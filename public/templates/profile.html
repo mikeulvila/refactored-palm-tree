@@ -5,20 +5,27 @@
       <h1>{{ user.username }}</h1>
       <p>{{ user.description }}</p>
       <ul>
-        <li><h4>_id: {{ user._id}}</h4></li>
-        <li><h4>access_token: {{ user.access_token}}</h4></li>
-        <li><h4>refresh_token: {{ user.refresh_token}}</h4></li>
-        <li><h4>city: {{ user.city}}</h4></li>
-        <li><h4>country: {{ user.country}}</h4></li>
-        <li><h4>user_uri: {{ user.user_uri}}</h4></li>
-        <li><h4>tracks_uri: {{ user.tracks_uri}}</h4></li>
+        <li>_id: {{ user._id}}</li>
+        <li>access_token: {{ user.access_token}}</li>
+        <li>refresh_token: {{ user.refresh_token}}</li>
+        <li>city: {{ user.city}}</li>
+        <li>country: {{ user.country}}</li>
+        <li>user_uri: {{ user.user_uri}}</li>
+        <li>tracks_uri: {{ user.tracks_uri}}</li>
+        <li>permalink_url: {{ user.permalink_url}}</li>
       </ul>
     </div>
     <div class='col-sm-6'>
-      <h1><a ui-sref='soundcloud-player'>Tracks</a></h1>
+      <h2 ng-show='tracks'><a ui-sref='soundcloud-player'>Your Tracks</a></h2>
+      <p class='alert alert-danger' ng-hide='tracks'>
+        You haven't added any songs to SoundCloud. Click to go to
+        <a href='{{ user.permalink_url }}'>
+          SoundCloud profile.
+        </a>
+      </p>
       <div ng-repeat='track in tracks'>
         <div>
-          <h3>title: {{ track.title }}</h3>
+          <h4>title: {{ track.title }}</h4>
           <p>id: {{ track.id }}</p>
           <p>uri: {{ track.uri }}</p>
           <p>user_id: {{ track.user_id }}</p>

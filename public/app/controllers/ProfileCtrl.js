@@ -2,6 +2,7 @@
 angular.module('Capstone')
   .controller('ProfileController', ['$scope', '$state', 'User',
     function($scope, $state, User) {
+      $scope.tracks;
 
       User.getUser()
         .then(function(user) {
@@ -12,8 +13,9 @@ angular.module('Capstone')
 
       User.getUserTracks()
         .then(function(tracks) {
-          $scope.tracks = tracks.data;
-          console.log('$scope.tracks', $scope.tracks);
+          if (tracks.data.length > 0) {
+            $scope.tracks = tracks.data;
+          };
         }).catch(function(error) {
           console.log('getUserTracks error>>>', error);
         });

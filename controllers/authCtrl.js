@@ -42,6 +42,7 @@ passport.use(new SoundCloudStrategy({
             newUser._id = soundCloudProfile.id;
             newUser.access_token = accessToken;
             newUser.refresh_token = refreshToken;
+            newUser.permalink_url = soundCloudProfile.permalink_url;
             newUser.username = soundCloudProfile.username;
             newUser.description = soundCloudProfile.description;
             newUser.avatar_url = soundCloudProfile.avatar_url;

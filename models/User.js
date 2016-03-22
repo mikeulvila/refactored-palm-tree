@@ -8,6 +8,7 @@ const userSchema = new Schema({
   _id: Number,
   access_token: String,
   refresh_token: String,
+  permalink_url: String,
   username: String,
   description: String,
   avatar_url: String,

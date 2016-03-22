@@ -23,6 +23,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="find-cowriter">Find Co-Writer</a></li>
+            <li><a ui-sref="profile">Profile</a></li>
             <li><a ui-sref="edit-profile">Edit Profile</a></li>
             <li><a href="/auth/logout">Logout</a></li>
           </ul>
@@ -47,8 +49,10 @@
     <script type="text/javascript" src="/app/controllers/ProfileCtrl.js"></script>
     <script type="text/javascript" src="/app/controllers/EditProfileCtrl.js"></script>
     <script type="text/javascript" src="/app/controllers/SoundcloudPlayerCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/FindCowriterCtrl.js"></script>
     <!-- angular services -->
     <script type="text/javascript" src="/app/services/UserService.js"></script>
+    <script type="text/javascript" src="/app/services/TrackService.js"></script>
 
 
     <!-- HTML5 WIDGET API -->

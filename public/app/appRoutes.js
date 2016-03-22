@@ -19,6 +19,11 @@ angular.module('Capstone')
             templateUrl: 'templates/edit-profile.html',
             controller: 'EditProfileController'
           })
+          .state('find-cowriter', {
+            url: '/find-cowriter',
+            templateUrl: 'templates/find-cowriter.html',
+            controller: 'FindCowriterController'
+          })
           .state('soundcloud-player', {
             url: '/soundcloud-player',
             templateUrl: 'templates/soundcloud-player.html',
