@@ -11,10 +11,21 @@ const User = require('../models/User.js');
 const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 
-router.get('/tracks', (req, res) => {
-  User.find().select('tracks_uri').exec((err, tracks) => {
-    console.log('tracks_uri', tracks);
-  })
+router.get('/my-genres-tracks', (req, res) => {
+  const myGenres = req.user.genres;
+  const myId = req.user._id;
+  const queryArray = _(myGenres).pickBy((val) => {
+    return val === true
+  }).omit('$__isNested').map((v,k) => {
+    const obj = {}
+
+    obj[`genres.${k}`] = v
+    return obj
+  }).value();
+
+  User.find({}, '_id tracks_uri strengths').or(queryArray).where('_id').ne(myId).exec((err, users) => {
+    console.log('users>>>', users);
+  });
 })
 
 module.exports = router;

@@ -5,8 +5,8 @@ angular.module('Capstone')
 
           return {
               // get user tracks
-              getTracks: function() {
-                return $http.get('/api/tracks');
+              getMyGenresTracks: function() {
+                return $http.get('/api/my-genres-tracks');
               }
 
 
