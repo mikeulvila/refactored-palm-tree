@@ -1,0 +1,20 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-4'>
+      <img src="{{ cowriter.avatar_url }}">
+      <h1>{{ cowriter.username }}</h1>
+      <p>{{ cowriter.description }}</p>
+      <ul>
+        <li>_id: {{ cowriter._id }}</li>
+        <li>access_token: {{ cowriter.access_token }}</li>
+        <li>refresh_token: {{ cowriter.refresh_token }}</li>
+        <li>city: {{ cowriter.city }}</li>
+        <li>state: {{ cowriter.state }}</li>
+        <li>country: {{ cowriter.country }}</li>
+        <li>user_uri: {{ cowriter.user_uri }}</li>
+        <li>tracks_uri: {{ cowriter.tracks_uri }}</li>
+        <li>permalink_url: {{ cowriter.permalink_url }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -6,11 +6,15 @@ angular.module('Capstone')
           return {
               // get user tracks
               findCowriters: function() {
-                return $http.get('/api/cowriters');
+                return $http.get('/api/cowriters/find');
               },
 
               likeCowriter: function(cowriter_id) {
                 return $http.post('/api/cowriters/like/' + cowriter_id);
+              },
+
+              getCowriter: function(cowriter_id) {
+                return $http.get('/api/user/' + cowriter_id);
               }
 
 

@@ -19,6 +19,14 @@ const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 // PUT     /forums/:forum       ->  update
 // DELETE  /forums/:forum       ->  destroy
 
+// get user by id
+router.get('/user/:id', (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err) throw err;
+    res.json(user);
+  });
+});
+
 // GET USER OBJECT
 router.get('/user', ensureAuthenticated, (req, res) => {
   res.json(req.user);

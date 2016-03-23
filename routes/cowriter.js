@@ -11,7 +11,7 @@ const User = require('../models/User.js');
 const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 
-router.get('/cowriters', (req, res) => {
+router.get('/cowriters/find', (req, res) => {
   const myGenres = req.user.genres;
   const myId = req.user._id;
   const queryArray = _(myGenres).pickBy((val) => {

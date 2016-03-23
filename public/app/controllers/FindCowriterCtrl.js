@@ -1,5 +1,5 @@
 angular.module('Capstone')
-  .controller('CowriterController', ['$scope', '$state', 'User', 'Cowriter', 'Tracks',
+  .controller('FindCowriterController', ['$scope', '$state', 'User', 'Cowriter', 'Tracks',
     function($scope, $state, User, Cowriter, Tracks) {
 
       let cowritersArray;
