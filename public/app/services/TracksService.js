@@ -1,12 +1,12 @@
-// public/app/services/UserService.js
+// public/app/services/TracksService.js
 angular.module('Capstone')
-    .factory('Track', ['$http', '$state',
+    .factory('Tracks', ['$http', '$state',
         function($http, $state) {
 
           return {
               // get user tracks
-              getMyGenresTracks: function() {
-                return $http.get('/api/my-genres-tracks');
+              getTracks: function(user_id) {
+                return $http.get('/api/tracks/'+user_id);
               }
 
 

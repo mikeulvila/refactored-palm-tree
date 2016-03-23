@@ -4,30 +4,40 @@ const router = express.Router();
 const request = require('request');
 const _ = require('lodash');
 // controller
-const userCtrl = require('../controllers/tracksCtrl.js');
+const tracksCtrl = require('../controllers/tracksCtrl.js');
 // MODEL
 const User = require('../models/User.js');
 // env
 const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 
-router.get('/my-genres-tracks', (req, res) => {
-  const myGenres = req.user.genres;
-  const myId = req.user._id;
-  const queryArray = _(myGenres).pickBy((val) => {
-    return val === true
-  }).omit('$__isNested').map((v,k) => {
-    const obj = {}
-
-    obj[`genres.${k}`] = v
-    return obj
-  }).value();
-
-  User.find({}, '_id tracks_uri strengths').or(queryArray).where('_id').ne(myId).exec((err, users) => {
-    res.json(users);
+router.get('/tracks/:user_id', (req, res) => {
+  const id = req.params.user_id;
+  console.log('req.params.tracks_uri>>>>>', req.params.user_id)
+  const getTracksUrl = 'https://api.soundcloud.com/users/'+id+'/tracks?client_id=' + CLIENT_ID;
+  // api request
+  request.get(getTracksUrl, (err, tracks) => {
+    if (err) {
+      res.sendStatus(404);
+    } else {
+      let userTracksArray = [];
+      const tracksArray = JSON.parse(tracks.body);
+      _.forEach(tracksArray, (v) => {
+        userTracksArray.push({
+          id: v.id,
+          title: v.title,
+          user_id: v.user_id,
+          uri: v.uri
+        });
+      });
+      res.json(userTracksArray);
+    }
   });
-})
+});
 
-[{classical: true}, {rock: true}]
+
+
+
+
 
 module.exports = router;

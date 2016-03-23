@@ -24,28 +24,6 @@ router.get('/user', ensureAuthenticated, (req, res) => {
   res.json(req.user);
 });
 
-router.get('/user/:id/tracks', ensureAuthenticated, (req, res) => {
-  const lookupTracksAPI = req.user.tracks_uri + '?client_id=' + CLIENT_ID;
-  // api request
-  request.get(lookupTracksAPI, (err, response) => {
-    if (err) {
-      res.sendStatus(404);
-    } else {
-      let filteredTracksArray = [];
-      const tracksArray = JSON.parse(response.body);
-      _.forEach(tracksArray, (v) => {
-        filteredTracksArray.push({
-          id: v.id,
-          title: v.title,
-          user_id: v.user_id,
-          uri: v.uri
-        });
-      });
-      res.json(filteredTracksArray);
-    }
-  });
-});
-
 // UPDATE USER OBJECT
 router.put('/user/:id', (req, res) => {
   User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, (err, user) => {
