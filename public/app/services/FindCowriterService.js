@@ -5,7 +5,7 @@ angular.module('Capstone')
 
           return {
               // get user tracks
-              getMyGenresUsers: function() {
+              getCowriters: function() {
                 return $http.get('/api/cowriters');
               }
 

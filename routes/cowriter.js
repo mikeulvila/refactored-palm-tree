@@ -23,7 +23,7 @@ router.get('/cowriters', (req, res) => {
     return obj
   }).value();
 
-  User.find({}, '_id tracks_uri strengths').or(queryArray).where('_id').ne(myId).exec((err, users) => {
+  User.find({}, '_id genres strengths').or(queryArray).where('_id').ne(myId).exec((err, users) => {
     res.json(users);
   });
 })

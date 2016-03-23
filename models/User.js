@@ -13,6 +13,7 @@ const userSchema = new Schema({
   description: String,
   avatar_url: String,
   city: String,
+  state: String,
   country: String,
   user_uri: String,
   tracks_uri: String,
