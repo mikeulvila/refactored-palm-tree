@@ -16,6 +16,7 @@
           <p>user_id: {{ track.user_id }}</p>
         </div>
       </div>
+      <div ng-show='matchMsg' class='alert alert-success'><p> {{ matchMsg }} </p></div>
       <div class='col-sm-6 text-center'>
         <button class='btn btn-default' ng-click='next()'><i class="fa fa-2x fa-times"></i></button>
       </div>

@@ -41,8 +41,15 @@ angular.module('Capstone')
 
       $scope.like = function(cowriter_id) {
         Cowriter.likeCowriter(cowriter_id)
-          .then(function() {
-            $scope.next();
+          .then(function(response) {
+            if(response.data.msg) {
+              $scope.matchMsg = response.data.msg;
+              setTimeout(function() {
+                $scope.next();
+              }, 2000);
+            } else {
+              $scope.next();
+            }
           }).catch(function(error) {
             console.log('like error>>>', error);
           });

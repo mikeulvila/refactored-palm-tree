@@ -32,11 +32,20 @@ router.post('/cowriters/like/:cowriter_id', (req, res) => {
   const cowriter_id = req.params.cowriter_id;
   User.findById(req.user._id, (err, user) => {
     if (user.likes.indexOf(cowriter_id) === -1) {
-
       user.likes.push(cowriter_id);
       user.save();
-
     }
+    User.findById(cowriter_id, (err, cowriter) => {
+      if (cowriter.likes.indexOf(user._id) !== -1 && cowriter.matches.indexOf(user._id) === -1) {
+        cowriter.matches.push(user._id);
+        cowriter.save();
+        user.matches.push(cowriter._id);
+        user.save();
+        res.json({msg: 'You have a match!'});
+      } else {
+        res.sendStatus(200);
+      }
+    });
   });
 });
 
