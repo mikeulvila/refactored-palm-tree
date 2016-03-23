@@ -14,6 +14,11 @@ angular.module('Capstone')
             templateUrl: 'templates/profile.html',
             controller: 'ProfileController'
           })
+          .state('profile.soundcloud-player', {
+            url: '/soundcloud-player',
+            templateUrl: 'templates/profile.soundcloud-player.html',
+            controller: 'SoundcloudPlayerController'
+          })
           .state('edit-profile', {
             url: '/edit-profile',
             templateUrl: 'templates/edit-profile.html',
@@ -23,11 +28,6 @@ angular.module('Capstone')
             url: '/find-cowriter',
             templateUrl: 'templates/find-cowriter.html',
             controller: 'FindCowriterController'
-          })
-          .state('soundcloud-player', {
-            url: '/soundcloud-player',
-            templateUrl: 'templates/soundcloud-player.html',
-            controller: 'SoundcloudPlayerController'
           });
 
         // For any unmatched url, redirect to /

@@ -20,7 +20,7 @@ angular.module('Capstone')
       };
 
       function getiframeSrc (id) {
-        return 'https://w.soundcloud.com/player/?auto_play=true&show_user=false&show_artwork=false&url=http://api.soundcloud.com/tracks/'+id;
+        return 'https://w.soundcloud.com/player/?auto_play=true&show_user=false&show_artwork=false&url=https://api.soundcloud.com/tracks/'+id;
       };
 
 

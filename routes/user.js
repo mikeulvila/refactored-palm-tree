@@ -24,7 +24,7 @@ router.get('/user', ensureAuthenticated, (req, res) => {
   res.json(req.user);
 });
 
-router.get('/user/tracks', ensureAuthenticated, (req, res) => {
+router.get('/user/:id/tracks', ensureAuthenticated, (req, res) => {
   const lookupTracksAPI = req.user.tracks_uri + '?client_id=' + CLIENT_ID;
   // api request
   request.get(lookupTracksAPI, (err, response) => {
@@ -48,7 +48,7 @@ router.get('/user/tracks', ensureAuthenticated, (req, res) => {
 
 // UPDATE USER OBJECT
 router.put('/user/:id', (req, res) => {
-  User.findOneAndUpdate({_id: req.body._id}, req.body, {new: true}, (err, user) => {
+  User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, (err, user) => {
     if (err) throw err;
     res.sendStatus(200);
   });

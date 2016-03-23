@@ -13,8 +13,8 @@ angular.module('Capstone')
                 return $http.put('/api/user/'+id, user);
               },
               // get user tracks
-              getUserTracks: function() {
-                return $http.get('/api/user/tracks');
+              getUserTracks: function(id) {
+                return $http.get('/api/user/' + id + '/tracks');
               }
 
 

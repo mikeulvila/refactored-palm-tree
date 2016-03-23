@@ -24,8 +24,10 @@ router.get('/my-genres-tracks', (req, res) => {
   }).value();
 
   User.find({}, '_id tracks_uri strengths').or(queryArray).where('_id').ne(myId).exec((err, users) => {
-    console.log('users>>>', users);
+    res.json(users);
   });
 })
+
+[{classical: true}, {rock: true}]
 
 module.exports = router;
