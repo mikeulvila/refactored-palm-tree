@@ -31,10 +31,13 @@ router.get('/cowriters', (req, res) => {
 router.post('/cowriters/like/:cowriter_id', (req, res) => {
   const cowriter_id = req.params.cowriter_id;
   User.findById(req.user._id, (err, user) => {
-    user.likes.push(cowriter_id);
-    user.save();
+    if (user.likes.indexOf(cowriter_id) === -1) {
+
+      user.likes.push(cowriter_id);
+      user.save();
+
+    }
   });
-  console.log('pushed like to user');
 });
 
 module.exports = router;
