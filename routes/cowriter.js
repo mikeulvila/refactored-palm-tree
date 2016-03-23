@@ -26,8 +26,15 @@ router.get('/cowriters', (req, res) => {
   User.find({}, '_id genres strengths').or(queryArray).where('_id').ne(myId).exec((err, users) => {
     res.json(users);
   });
-})
+});
 
-[{classical: true}, {rock: true}]
+router.post('/cowriters/like/:cowriter_id', (req, res) => {
+  const cowriter_id = req.params.cowriter_id;
+  User.findById(req.user._id, (err, user) => {
+    user.likes.push(cowriter_id);
+    user.save();
+  });
+  console.log('pushed like to user');
+});
 
 module.exports = router;

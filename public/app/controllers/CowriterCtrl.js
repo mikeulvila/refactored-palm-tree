@@ -1,11 +1,11 @@
 angular.module('Capstone')
-  .controller('FindCowriterController', ['$scope', '$state', 'User', 'FindCowriter', 'Tracks',
-    function($scope, $state, User, FindCowriter, Tracks) {
+  .controller('CowriterController', ['$scope', '$state', 'User', 'Cowriter', 'Tracks',
+    function($scope, $state, User, Cowriter, Tracks) {
 
       let cowritersArray;
       let maxIndex;
 
-      FindCowriter.getCowriters()
+      Cowriter.findCowriters()
         .then(function(cowriters) {
           cowritersArray = cowriters.data;
           maxIndex = cowritersArray.length;
@@ -38,6 +38,15 @@ angular.module('Capstone')
           $state.go('profile');
         }
       };
+
+      $scope.like = function(cowriter_id) {
+        Cowriter.likeCowriter(cowriter_id)
+          .then(function() {
+            $scope.next();
+          }).catch(function(error) {
+            console.log('like error>>>', error);
+          });
+      }
 
       $scope.play = function (src) {
         console.log('play function', src);

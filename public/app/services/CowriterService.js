@@ -1,12 +1,16 @@
 // public/app/services/UserService.js
 angular.module('Capstone')
-    .factory('FindCowriter', ['$http', '$state',
+    .factory('Cowriter', ['$http', '$state',
         function($http, $state) {
 
           return {
               // get user tracks
-              getCowriters: function() {
+              findCowriters: function() {
                 return $http.get('/api/cowriters');
+              },
+
+              likeCowriter: function(cowriter_id) {
+                return $http.post('/api/cowriters/like/' + cowriter_id);
               }
 
 

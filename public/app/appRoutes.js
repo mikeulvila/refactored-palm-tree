@@ -27,7 +27,7 @@ angular.module('Capstone')
           .state('find-cowriter', {
             url: '/find-cowriter',
             templateUrl: 'templates/find-cowriter.html',
-            controller: 'FindCowriterController'
+            controller: 'CowriterController'
           });
 
         // For any unmatched url, redirect to /
