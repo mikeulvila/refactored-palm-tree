@@ -3,11 +3,12 @@ angular.module('Capstone')
     function($scope, $state, User, FindCowriter, Tracks) {
 
       let cowritersArray;
-      $scope.cowriter;
+      let maxIndex;
 
       FindCowriter.getCowriters()
         .then(function(cowriters) {
           cowritersArray = cowriters.data;
+          maxIndex = cowritersArray.length;
           $scope.cowriter = cowritersArray[0];
           Tracks.getTracks($scope.cowriter._id)
             .then(function(tracks) {
@@ -22,11 +23,26 @@ angular.module('Capstone')
 
       let index = 1;
 
+      $scope.next = function() {
+        if (index < maxIndex) {
+          $scope.cowriter = cowritersArray[index];
+          Tracks.getTracks($scope.cowriter._id)
+            .then(function(tracks) {
+              $scope.cowriter['tracks'] = tracks.data;
+            }).catch(function() {
+              console.log('getTracks error>>>', error);
+            });
+          index++;
+        } else {
+          alert('there are no more genre matching cowriters');
+          $state.go('profile');
+        }
+      };
 
       $scope.play = function (src) {
         console.log('play function', src);
         $scope.iframeSrc = 'https://w.soundcloud.com/player/?auto_play=true&show_user=false&show_artwork=false&url='+src;
-      }
+      };
 
 
 
