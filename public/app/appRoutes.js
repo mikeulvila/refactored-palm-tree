@@ -29,6 +29,11 @@ angular.module('Capstone')
             templateUrl: 'templates/view-cowriter.html',
             controller: 'ViewCowriterController'
           })
+          .state('message', {
+            url: '/message',
+            templateUrl: 'templates/message.html',
+            controller: 'MessageController'
+          })
           .state('profile.soundcloud-player', {
             url: '/soundcloud-player',
             templateUrl: 'templates/profile.soundcloud-player.html',

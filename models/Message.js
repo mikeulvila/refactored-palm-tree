@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 
 // message schema
 const messageSchema = new Schema({
-  user_1: Number,
-  user_2: Number,
+  _id: Number, // user1_id + user2_id
+  users: [Number],
   user_1_message: [{
     user_id: Number,
     message: String,
