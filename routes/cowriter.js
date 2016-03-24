@@ -29,17 +29,20 @@ router.get('/cowriters/find', (req, res) => {
 });
 
 router.post('/cowriters/like/:cowriter_id', (req, res) => {
-  const cowriter_id = req.params.cowriter_id;
-  User.findById(req.user._id, (err, user) => {
+  const cowriter_id = parseInt(req.params.cowriter_id);
+  const user_id = req.user._id;
+  User.findById(user_id, (err, user) => {
+    if (err) throw err;
     if (user.likes.indexOf(cowriter_id) === -1) {
       user.likes.push(cowriter_id);
       user.save();
     }
     User.findById(cowriter_id, (err, cowriter) => {
-      if (cowriter.likes.indexOf(user._id) !== -1 && cowriter.matches.indexOf(user._id) === -1) {
-        cowriter.matches.push(user._id);
+      if (err) throw err;
+      if (cowriter.likes.indexOf(user_id) !== -1 && cowriter.matches.indexOf(user_id) === -1) {
+        cowriter.matches.push({id:user_id, username:user.username});
         cowriter.save();
-        user.matches.push(cowriter._id);
+        user.matches.push({id:cowriter_id, username:cowriter.username});
         user.save();
         res.json({msg: 'You have a match!'});
       } else {

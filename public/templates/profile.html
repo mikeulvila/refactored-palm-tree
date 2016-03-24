@@ -34,12 +34,12 @@
       </div>
     </div>
     <div class='col-sm-3'>
-      <h2 ng-show='user.matches'>Your Matches</h2>
-      <p class='alert alert-danger' ng-hide='user.matches'>
-        You have no one who thinks you're good.
+      <h2 ng-show='matches'>Your Matches</h2>
+      <p class='alert alert-danger' ng-hide='matches'>
+        You have no one who thinks you're good. <a ui-sref="find-cowriter">Find a cowriter.</a>
       </p>
-      <div ng-repeat='match in user.matches'>
-          <p> {{ match }} </p>
+      <div ng-repeat='match in matches'>
+          <p><a ng-href="/#/view-cowriter/{{match.id}}"> {{ match.username }} </a></p>
       </div>
     </div>
     <div class='col-sm-3'>
