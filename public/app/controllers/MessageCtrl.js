@@ -16,24 +16,36 @@ angular.module('Capstone')
           console.log(error);
         });
 
-      $scope.message;
-      $scope.newMsg;
-      $scope.new;
+      getMessages();
 
-      Message.getMessage(message_id)
+      $scope.text;
+
+      $scope.sendMessage = function (id) {
+        Message.sendMessage(id, { text:$scope.text})
+          .then(function(response) {
+            console.log('post response', response);
+            $scope.text = '';
+            getMessages();
+          }).catch(function(error) {
+            console.log(error);
+          });
+      };
+
+      function getMessages () {
+        Message.getMessage(message_id)
         .then(function(message){
           if (message.data.newMsg) {
             $scope.newMsg = message.data;
+          } else {
+            $scope.newMsg = '';
+            $scope.message = message.data;
+            console.log('scope.message', $scope.message)
           }
           console.log('message response>>>', message);
-        })
-
-      $scope.sendMessage = function (id) {
-        Message.sendMessage(id, $scope.new)
-          .then(function(response) {
-            console.log('post response', response);
-          })
-      }
+        }).catch(function(error) {
+          console.log(error);
+        });
+      };
 
       function makeMessageId (id_1, id_2) {
         if (id_1 < id_2) {

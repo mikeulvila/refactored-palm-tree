@@ -32,7 +32,9 @@ router.post('/message/:message_id', (req, res) => {
     cowriter_id = parseInt(cowriter_id[1]);
   }
   const text = req.body.text;
-  Message.findById(message_id, (err, message) {
+  console.log('req.body', req.body)
+
+  Message.findById(message_id, (err, message) => {
     if (err) throw err;
 
     if (message) {
@@ -40,11 +42,17 @@ router.post('/message/:message_id', (req, res) => {
     } else {
       const newMessage = new Message();
       newMessage._id = message_id;
-      newMessage.usernames = []
-
+      newMessage.usernames = [user_id, cowriter_id];
+      newMessage.content = {
+                            user_id: user_id,
+                            text: text
+                          };
+      newMessage.save();
+      res.sendStatus(200);
     }
 
-  })
-})
+  });
+
+});
 
 module.exports = router;

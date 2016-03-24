@@ -6,14 +6,13 @@ const Schema = mongoose.Schema;
 // message schema
 const messageSchema = new Schema({
   _id: Number, // user1_id + user2_id
-  usernames: [String],
+  users: Array,
   content: [{
     user_id: Number,
-    username: String,
     text: String,
-    read: {
+    new: {
         type: Boolean,
-        default: false
+        default: true
     },
     sent_at: {
       type: Date,
