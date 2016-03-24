@@ -18,7 +18,7 @@ angular.module('Capstone')
 
       $scope.message;
       $scope.newMsg;
-      $scope.content;
+      $scope.new;
 
       Message.getMessage(message_id)
         .then(function(message){
@@ -29,7 +29,7 @@ angular.module('Capstone')
         })
 
       $scope.sendMessage = function (id) {
-        Message.sendMessage(id, $scope.content)
+        Message.sendMessage(id, $scope.new)
           .then(function(response) {
             console.log('post response', response);
           })

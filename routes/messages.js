@@ -22,7 +22,29 @@ router.get('/message/:message_id', (req, res) => {
 });
 
 router.post('/message/:message_id', (req, res) => {
-  console.log('req.body>>>>', req.body);
+  // both id's are ints at this point
+  const message_id = parseInt(req.params.message_id);
+  const user_id = req.user._id;
+  let cowriter_id = message_id.toString().split(user_id.toString());
+  if (cowriter_id[0]) {
+    cowriter_id = parseInt(cowriter_id[0]);
+  } else if (cowriter_id[1]) {
+    cowriter_id = parseInt(cowriter_id[1]);
+  }
+  const text = req.body.text;
+  Message.findById(message_id, (err, message) {
+    if (err) throw err;
+
+    if (message) {
+
+    } else {
+      const newMessage = new Message();
+      newMessage._id = message_id;
+      newMessage.usernames = []
+
+    }
+
+  })
 })
 
 module.exports = router;
