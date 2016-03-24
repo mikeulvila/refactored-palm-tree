@@ -30,7 +30,7 @@ angular.module('Capstone')
             controller: 'ViewCowriterController'
           })
           .state('message', {
-            url: '/message',
+            url: '/message/:user_id/:cowriter_id',
             templateUrl: 'templates/message.html',
             controller: 'MessageController'
           })

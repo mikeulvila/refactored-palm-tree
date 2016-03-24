@@ -8,7 +8,8 @@ const messagesCtrl = require('../controllers/messagesCtrl.js');
 const Message = require('../models/Message.js');
 
 router.get('/message/:message_id', (req, res) => {
-  res.json(req.params.message_id);
+  console.log('message_id>>>', req.params.message_id);
+  res.json(req.params);
 })
 
 module.exports = router;

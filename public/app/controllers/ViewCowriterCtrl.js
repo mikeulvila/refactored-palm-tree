@@ -3,6 +3,7 @@ angular.module('Capstone')
   .controller('ViewCowriterController', ['$scope', '$state', 'User', 'Tracks', 'Cowriter', 'Message',
     function($scope, $state, User, Tracks, Cowriter, Message) {
 
+
       Cowriter.getCowriter($state.params.id)
         .then(function(response) {
           $scope.cowriter = response.data;
@@ -10,6 +11,12 @@ angular.module('Capstone')
         }).catch(function(error) {
           console.log('getCowriter error>>>', error);
         });
+
+      User.getUser().then(function(user){
+        $scope.user = user.data;
+      }).catch(function(error){
+
+      });
 
       $scope.sendMessage = function (cowriter_id) {
         Cowriter.sendMsg(cowriter_id)

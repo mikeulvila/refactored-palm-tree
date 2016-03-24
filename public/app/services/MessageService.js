@@ -5,8 +5,20 @@ angular.module('Capstone')
 
           return {
               // send message
-              getMessage: function (message_id) {
+              getMessage: function (user_id, cowriter_id) {
+                var message_id = '';
+                if (user_id < cowriter_id) {
+                  message_id = user_id+''+cowriter_id;
+                } else {
+                  message_id = cowriter_id+''+user_id;
+                }
+
                 return $http.get('/api/message/' + message_id);
+
+              },
+
+              sendMessage: function (user_id, cowriter_id) {
+                return $http.post('/api/message')
               }
 
 

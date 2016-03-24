@@ -6,19 +6,15 @@ const Schema = mongoose.Schema;
 // message schema
 const messageSchema = new Schema({
   _id: Number, // user1_id + user2_id
-  user_1_message: [{
+  usernames: [String],
+  content: [{
     user_id: Number,
-    message: String,
-    read: Boolean,
-    sent_at: {
-      type: Date,
-      default: Date.now
-    }
-  }],
-  user_2_message: [{
-    user_id: Number,
-    message: String,
-    read: Boolean,
+    username: String,
+    body: String,
+    read: {
+        type: Boolean,
+        default: false
+    },
     sent_at: {
       type: Date,
       default: Date.now
