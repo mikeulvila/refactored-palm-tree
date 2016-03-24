@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// mongoose schema
+// user schema
 const userSchema = new Schema({
   _id: Number,
   access_token: String,
