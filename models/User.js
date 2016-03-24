@@ -39,7 +39,8 @@ const userSchema = new Schema({
   joined_at: {
     type: Date,
     default: Date.now
-  }
+  },
+  messages: [Number]
 });
 
 const User = module.exports = mongoose.model('Users', userSchema);
