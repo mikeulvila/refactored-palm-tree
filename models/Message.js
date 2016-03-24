@@ -10,7 +10,7 @@ const messageSchema = new Schema({
   content: [{
     user_id: Number,
     username: String,
-    body: String,
+    text: String,
     read: {
         type: Boolean,
         default: false
@@ -26,4 +26,4 @@ const messageSchema = new Schema({
   }
 });
 
-const Messages = module.exports = mongoose.model('Messages', messageSchema);
+const Message = module.exports = mongoose.model('Messages', messageSchema);

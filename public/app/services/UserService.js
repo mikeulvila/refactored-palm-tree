@@ -11,7 +11,7 @@ angular.module('Capstone')
               // update profile
               updateUser: function(id, user) {
                 return $http.put('/api/user/'+id, user);
-              }
+              },
 
               // these will work when more API routes are defined on the Node side of things
               // call to POST and create a new nerd
