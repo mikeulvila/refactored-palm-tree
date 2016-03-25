@@ -8,11 +8,10 @@ angular.module('Capstone')
               getMessage: function (message_id) {
                 return $http.get('/api/message/' + message_id);
               },
-
+              // post message
               sendMessage: function (message_id, text) {
                 return $http.post('/api/message/' + message_id, text)
               }
-
 
           }
 

@@ -20,7 +20,7 @@ router.get('/message/:message_id', (req, res) => {
       res.json({newMsg: 'Start a new message with', message_id: message_id})
     }
   })
-});
+}); // get message/:message_id
 
 router.post('/message/:message_id', (req, res) => {
   // both id's are ints at this point
@@ -66,6 +66,6 @@ router.post('/message/:message_id', (req, res) => {
 
   });
 
-});
+}); // end post /message/:message_id
 
 module.exports = router;

@@ -39,7 +39,12 @@
         You have no one who thinks you're good. <a ui-sref="find-cowriter">Find a cowriter.</a>
       </p>
       <div ng-repeat='match in matches'>
-          <p><a ng-href="/#/view-cowriter/{{match.id}}"> {{ match.username }} </a></p>
+        <div>
+          <p> {{ match.username }}
+            <a class='btn btn-primary btn-xs' ng-href="/#/view-cowriter/{{match.id}}">View Profile</a>
+            <a class='btn btn-primary btn-xs' ng-href="/#/message/{{user._id}}/{{match.id}}">Message</a>
+          </p>
+        </div>
       </div>
     </div>
     <div class='col-sm-3'>
