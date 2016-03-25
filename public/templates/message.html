@@ -20,7 +20,9 @@
     </div>
     <div class='col-sm-6'>
       <div ng-repeat='content in message.content track by $index'>
-        <p class='bg-primary'>{{ content.text }}</p>
+        <div ng-class="content.user_id===cowriter._id ? 'bg-danger text-right' : 'bg-primary text-left'">
+          <p>{{ content.text }}</p>
+        </div>
       </div>
     </div>
   </div>
