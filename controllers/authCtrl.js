@@ -6,12 +6,8 @@ const User = require('../models/User.js');
 // env variables to keep secret
 const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
-const HOST = if (process.env.PROD_HOST) {
-  return process.env.PROD_HOST + '/auth/soundcloud/callback';
-} else {
-  return 'http://127.0.0.1:3000/auth/soundcloud/callback';
-}
-
+const HOST = process.env.PROD_HOST || 'http://127.0.0.1:3000'
+const CALLBACK_URL = HOST + '/auth/soundcloud/callback';
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
     done(null, user._id);
@@ -28,7 +24,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new SoundCloudStrategy({
     clientID: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
-    callbackURL: HOST
+    callbackURL: CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, done) {
     const soundCloudProfile = profile._json;
