@@ -7,7 +7,7 @@ angular.module('Capstone')
           .state('home', {
             url: '/',
             templateUrl: 'templates/home.html',
-            controller: 'MainController'
+            controller: 'HomeController'
           })
           .state('profile', {
             url: '/profile',
