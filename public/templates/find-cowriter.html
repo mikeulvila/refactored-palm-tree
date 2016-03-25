@@ -17,6 +17,12 @@
         </div>
       </div>
       <div ng-show='matchMsg' class='alert alert-success'><p> {{ matchMsg }} </p></div>
+      <div ng-show='warning' class='alert alert-warning'><p> {{ warning }} </p></div>
+      <div ng-show='nomore' class='alert alert-info'>
+        <p>You have no more possible cowriters to choose from. Please consider a different career.
+        <a ui-sref="edit-profile">Or just select more genres.</a></p>
+        <a class='btn btn-primary' ui-sref="profile">Return To Profile</a>
+      </div>
       <div class='col-sm-6 text-center'>
         <button class='btn btn-default' ng-click='next()'><i class="fa fa-2x fa-times"></i></button>
       </div>

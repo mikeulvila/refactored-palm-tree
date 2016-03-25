@@ -2,8 +2,11 @@ angular.module('Capstone')
   .controller('FindCowriterController', ['$scope', '$state', 'User', 'Cowriter', 'Tracks',
     function($scope, $state, User, Cowriter, Tracks) {
 
-      let cowritersArray;
-      let maxIndex;
+      $scope.nomore;
+
+      var cowritersArray;
+      var maxIndex;
+
 
       Cowriter.findCowriters()
         .then(function(cowriters) {
@@ -21,7 +24,7 @@ angular.module('Capstone')
           console.log('error>>>', error);
         });
 
-      let index = 1;
+      var index = 1;
 
       $scope.next = function() {
         if (index < maxIndex) {
@@ -30,12 +33,12 @@ angular.module('Capstone')
             .then(function(tracks) {
               $scope.cowriter['tracks'] = tracks.data;
             }).catch(function() {
-              console.log('getTracks error>>>', error);
+              console.log(error);
             });
           index++;
         } else {
-          alert('there are no more genre matching cowriters');
-          $state.go('profile');
+          $scope.nomore = true;
+          $scope.$apply();
         }
       };
 
@@ -46,7 +49,12 @@ angular.module('Capstone')
               $scope.matchMsg = response.data.msg;
               setTimeout(function() {
                 $scope.next();
-              }, 2000);
+              }, 1000);
+            } else if (response.data.warning) {
+              $scope.warning = response.data.warning;
+              setTimeout(function() {
+                $scope.next();
+              }, 1000);
             } else {
               $scope.next();
             }

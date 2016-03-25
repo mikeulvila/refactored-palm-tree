@@ -6,6 +6,7 @@ angular.module('Capstone')
       $scope.user;
       $scope.tracks;
       $scope.matches;
+      $scope.notracks;
 
       User.getUser()
         .then(function(user) {
@@ -14,6 +15,8 @@ angular.module('Capstone')
             .then(function(tracks) {
               if (tracks.data.length > 0) {
                 $scope.tracks = tracks.data;
+              } else {
+                $scope.notracks = true;
               };
             }).catch(function(error) {
               console.log('getTracks error>>>', error);

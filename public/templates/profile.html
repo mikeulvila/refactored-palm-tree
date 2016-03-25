@@ -18,7 +18,11 @@
     </div>
     <div class='col-sm-3'>
       <h2 ng-show='tracks'>Your Tracks</h2>
-      <p class='alert alert-danger' ng-show='!tracks'>
+      <div class='text-center' ng-hide='notracks || tracks'>
+        <i class="fa fa-5x fa-spinner fa-pulse"></i>
+        <small class='clearfix'>Loading tracks...</small>
+      </div>
+      <p class='alert alert-danger' ng-show='notracks'>
         You haven't added any songs to SoundCloud. Click to go to
         <a href='{{ user.permalink_url }}'>
           SoundCloud profile.
