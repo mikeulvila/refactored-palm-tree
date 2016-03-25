@@ -20,16 +20,16 @@ const userSchema = new Schema({
   likes: Array,
   matches: Array,
   genres: {
-    pop: Boolean,
-    rock: Boolean,
-    latin: Boolean,
-    jazz: Boolean,
-    blues: Boolean,
-    country: Boolean,
-    dance: Boolean,
-    rap: Boolean,
-    folk: Boolean,
-    classical: Boolean
+    pop: {type:Boolean,default:false},
+    rock: {type:Boolean,default:false},
+    latin: {type:Boolean,default:false},
+    jazz: {type:Boolean,default:false},
+    blues: {type:Boolean,default:false},
+    country: {type:Boolean,default:false},
+    dance: {type:Boolean,default:false},
+    rap: {type:Boolean,default:false},
+    folk: {type:Boolean,default:false},
+    classical: {type:Boolean,default:false}
   },
   strengths: {
     lyrics: Number,
