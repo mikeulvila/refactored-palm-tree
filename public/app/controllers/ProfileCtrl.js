@@ -11,6 +11,7 @@ angular.module('Capstone')
       User.getUser()
         .then(function(user) {
           $scope.user = user.data;
+
           Tracks.getTracks(user.data._id)
             .then(function(tracks) {
               if (tracks.data.length > 0) {
