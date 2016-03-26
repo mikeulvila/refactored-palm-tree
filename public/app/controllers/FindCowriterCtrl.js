@@ -27,6 +27,7 @@ angular.module('Capstone')
       var index = 1;
 
       $scope.next = function() {
+        $scope.matchMsg;
         if (index < maxIndex) {
           $scope.cowriter = cowritersArray[index];
           Tracks.getTracks($scope.cowriter._id)
