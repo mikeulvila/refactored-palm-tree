@@ -28,7 +28,6 @@ passport.use(new SoundCloudStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     const soundCloudProfile = profile._json;
-    console.log('profile>>>', soundCloudProfile);
     // asynchronous verification
     process.nextTick(function () {
       // find user in database from soundcloud id
