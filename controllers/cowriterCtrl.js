@@ -41,7 +41,12 @@ module.exports.likeCowriter = (req, res) => {
         cowriter.save();
         user.matches.push({id:cowriter_id, username:cowriter.username});
         user.save();
-        res.json({msg: 'You have a match!'});
+        res.json({
+          msg: 'You have a match!',
+          cowriterUsername: cowriter.username,
+          cowriter_id: cowriter_id,
+          user_id: user_id
+        });
       } else {
         res.sendStatus(200);
       }

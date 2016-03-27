@@ -27,7 +27,7 @@ angular.module('Capstone')
       var index = 1;
 
       $scope.next = function() {
-        $scope.matchMsg;
+        $scope.likeMatch;
         if (index < maxIndex) {
           $scope.cowriter = cowritersArray[index];
           Tracks.getTracks($scope.cowriter._id)
@@ -47,15 +47,9 @@ angular.module('Capstone')
         Cowriter.likeCowriter(cowriter_id)
           .then(function(response) {
             if(response.data.msg) {
-              $scope.matchMsg = response.data.msg;
-              setTimeout(function() {
-                $scope.next();
-              }, 1000);
+              $scope.likeMatch = response.data;
             } else if (response.data.warning) {
               $scope.warning = response.data.warning;
-              setTimeout(function() {
-                $scope.next();
-              }, 1000);
             } else {
               $scope.next();
             }

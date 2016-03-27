@@ -11,17 +11,20 @@ angular.module('Capstone')
       User.getUser()
         .then(function(user) {
           $scope.user = user.data;
-
-          Tracks.getTracks(user.data._id)
-            .then(function(tracks) {
-              if (tracks.data.length > 0) {
-                $scope.tracks = tracks.data;
-              } else {
-                $scope.notracks = true;
-              };
-            }).catch(function(error) {
-              console.log('getTracks error>>>', error);
-            });
+          if (user.data.genres && user.data.strengths) {
+            Tracks.getTracks(user.data._id)
+              .then(function(tracks) {
+                if (tracks.data.length > 0) {
+                  $scope.tracks = tracks.data;
+                } else {
+                  $scope.notracks = true;
+                };
+              }).catch(function(error) {
+                console.log('getTracks error>>>', error);
+              });
+          } else {
+            $state.go('edit-profile');
+          }
           if (user.data.matches.length) {
             $scope.matches = user.data.matches;
           }

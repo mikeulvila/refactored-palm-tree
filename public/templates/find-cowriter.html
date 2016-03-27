@@ -16,18 +16,27 @@
           <p>user_id: {{ track.user_id }}</p>
         </div>
       </div>
-      <div ng-show='matchMsg' class='alert alert-success'><p> {{ matchMsg }} </p></div>
+      <div ng-show='likeMatch' class='alert alert-success'>
+        <p>
+          {{ likeMatch.msg }} Message <a ng-href="/#/message/{{likeMatch.user_id}}/{{likeMatch.cowriter_id}}">{{ likeMatch.cowriterUsername }}</a> or <a ng-href="/#/view-cowriter/{{likeMatch.cowriter_id}}">view their profile.</a>
+        </p>
+      </div>
       <div ng-show='warning' class='alert alert-warning'><p> {{ warning }} </p></div>
       <div ng-show='nomore' class='alert alert-info'>
         <p>You have no more possible cowriters to choose from. Please consider a different career.
         <a ui-sref="edit-profile">Or just select more genres.</a></p>
         <a class='btn btn-primary' ui-sref="profile">Return To Profile</a>
       </div>
-      <div class='col-sm-6 text-center'>
-        <button class='btn btn-default' ng-click='next()'><i class="fa fa-2x fa-times"></i></button>
+      <div ng-show='likeMatch || warning' class='col-sm-12 text-center'>
+        <button class='btn btn-default' ng-click='next()'>Next -></button>
       </div>
-      <div class='col-sm-6 text-center'>
-        <button class='btn btn-default' ng-click='like(cowriter._id)'><i class="fa fa-2x fa-heart"></i></button>
+      <div ng-hide='likeMatch || warning'>
+        <div class='col-sm-6 text-center'>
+          <button class='btn btn-default' ng-click='next()'><i class="fa fa-2x fa-times"></i></button>
+        </div>
+        <div class='col-sm-6 text-center'>
+          <button class='btn btn-default' ng-click='like(cowriter._id)'><i class="fa fa-2x fa-heart"></i></button>
+        </div>
       </div>
     </div>
     <div class='col-sm-6'>

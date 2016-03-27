@@ -6,8 +6,11 @@ angular.module('Capstone')
       User.getUser()
         .then(function(user) {
           $scope.user = user.data;
+          if (!user.data.genres || !user.data.strengths) {
+            $scope.selectGenres_Strengths = true;
+          }
         }).catch(function (error) {
-
+          console.log(error);
         });
 
       $scope.updateProfile = function(){
