@@ -30,7 +30,7 @@
       <div ng-show='likeMatch || warning' class='col-sm-12 text-center'>
         <button class='btn btn-default' ng-click='next()'>Next -></button>
       </div>
-      <div ng-hide='likeMatch || warning'>
+      <div ng-hide='likeMatch || warning || nomore'>
         <div class='col-sm-6 text-center'>
           <button class='btn btn-default' ng-click='next()'><i class="fa fa-2x fa-times"></i></button>
         </div>

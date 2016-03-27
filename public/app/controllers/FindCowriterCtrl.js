@@ -39,7 +39,6 @@ angular.module('Capstone')
           index++;
         } else {
           $scope.nomore = true;
-          $scope.$apply();
         }
       };
 
