@@ -2,41 +2,15 @@
 <html lang="en">
   <head>
     <title>Cowriter Finder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- styles -->
     <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="/stylesheets/main.css" type="text/css">
-    <!-- scripts -->
-    <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
-    <script type="text/javascript" src="/vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script type="text/javascript" src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <!-- 3rd party libraries -->
-    <script src="/vendor/ng-file-upload/ng-file-upload.min.js"></script>
-    <!-- angular app.js -->
-    <script type="text/javascript" src="/app/app.js"></script>
-    <!-- angular routes -->
-    <script type="text/javascript" src="/app/appRoutes.js"></script>
-    <!-- angular controllers -->
-    <script type="text/javascript" src="/app/controllers/NavCtrl.js"></script>
-    <script type="text/javascript" src="/app/controllers/HomeCtrl.js"></script>
-    <script type="text/javascript" src="/app/controllers/ProfileCtrl.js"></script>
-    <script type="text/javascript" src="/app/controllers/EditProfileCtrl.js"></script>
-    <script type="text/javascript" src="/app/controllers/SoundcloudPlayerCtrl.js"></script>
-    <script type="text/javascript" src="/app/controllers/FindCowriterCtrl.js"></script>
-    <script type="text/javascript" src="/app/controllers/ViewCowriterCtrl.js"></script>
-    <script type="text/javascript" src="/app/controllers/MessageCtrl.js"></script>
-    <!-- angular services -->
-    <script type="text/javascript" src="/app/services/UserService.js"></script>
-    <script type="text/javascript" src="/app/services/CowriterService.js"></script>
-    <script type="text/javascript" src="/app/services/TracksService.js"></script>
-    <script type="text/javascript" src="/app/services/MessageService.js"></script>
-    <!-- HTML5 WIDGET API -->
-    <script type="text/javascript" src="/javascripts/soundcloud.player.api.js"></script>
-    <script type="text/javascript" src="/javascripts/widget.js"></script>
   </head>
   <body ng-app="Capstone">
-    <nav ng-controller='NavController' class="navbar navbar-default">
+    <nav ng-controller='NavController' class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -64,6 +38,34 @@
     <!-- route partials -->
     <div ui-view></div>
 
-
+    <!-- scripts -->
+    <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- 3rd party libraries -->
+    <script src="/vendor/ng-file-upload/ng-file-upload.min.js"></script>
+    <!-- angular app.js -->
+    <script type="text/javascript" src="/app/app.js"></script>
+    <!-- angular routes -->
+    <script type="text/javascript" src="/app/appRoutes.js"></script>
+    <!-- angular controllers -->
+    <script type="text/javascript" src="/app/controllers/NavCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/HomeCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/ProfileCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/EditProfileCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/SoundcloudPlayerCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/FindCowriterCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/ViewCowriterCtrl.js"></script>
+    <script type="text/javascript" src="/app/controllers/MessageCtrl.js"></script>
+    <!-- angular services -->
+    <script type="text/javascript" src="/app/services/UserService.js"></script>
+    <script type="text/javascript" src="/app/services/CowriterService.js"></script>
+    <script type="text/javascript" src="/app/services/TracksService.js"></script>
+    <script type="text/javascript" src="/app/services/MessageService.js"></script>
+    <!-- HTML5 WIDGET API -->
+    <script type="text/javascript" src="/javascripts/soundcloud.player.api.js"></script>
+    <script type="text/javascript" src="/javascripts/widget.js"></script>
   </body>
 </html>
