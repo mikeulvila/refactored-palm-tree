@@ -41,14 +41,18 @@
         <div class='header'>
           <h3>{{ likeMatch.msg }}</h3>
         </div>
-        <h4>{{ likeMatch.username }}</h4>
-        <img ng-src="{{ likeMatch.avatar_url }}">
-        <a ng-href="/#/message/{{likeMatch.user_id}}/{{likeMatch.cowriter_id}}">
-          <i class="fa fa-comment"></i> Send a Message
-        </a>
-        <a ng-href="/#/view-cowriter/{{likeMatch.cowriter_id}}">
-          <i class="fa fa-user"></i> View Profile
-        </a>
+        <h4>You and {{ likeMatch.cowriterUsername }} have liked each others music.</h4>
+        <div>
+          <img ng-src="{{ likeMatch.avatar_url }}">
+        </div>
+        <div>
+          <a class='btn btn-default' ng-href="/#/message/{{likeMatch.user_id}}/{{likeMatch.cowriter_id}}">
+            <i class="fa fa-comment"></i> Send a Message
+          </a>
+          <a class='btn btn-default' ng-href="/#/view-cowriter/{{likeMatch.cowriter_id}}">
+            <i class="fa fa-user"></i> View Profile
+          </a>
+        </div>
       </div>
 
 <!-- ****************************END LIKE MATCH ALERT************************ -->

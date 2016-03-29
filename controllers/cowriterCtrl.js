@@ -37,9 +37,9 @@ module.exports.likeCowriter = (req, res) => {
     User.findById(cowriter_id, (err, cowriter) => {
       if (err) throw err;
       if (cowriter.likes.indexOf(user_id) !== -1 && cowriter.matches.indexOf(user_id) === -1) {
-        cowriter.matches.push(user_id);
+        cowriter.matches.push({id:user_id, username:user.username});
         cowriter.save();
-        user.matches.push(cowriter_id);
+        user.matches.push({id:cowriter_id, username:cowriter.username});
         user.save();
         res.json({
           msg: 'You have a match!',

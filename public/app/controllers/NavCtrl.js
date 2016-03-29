@@ -11,12 +11,11 @@ angular.module('Capstone')
             $state.go('profile');
           }
         }).catch(function (error) {
-          console.log('nav-error>>>>>>', error);
+          console.log(error);
         });
 
 
         $(".navbar-collapse li a").on('click', function(event) {
-          console.log('clicked nav');
           $(".navbar-collapse").collapse('hide');
         });
 

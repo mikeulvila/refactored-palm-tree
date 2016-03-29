@@ -1,23 +1,63 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-sm-4'>
-      <img src="{{ cowriter.avatar_url }}">
-      <h1>{{ cowriter.username }}</h1>
-      <p>{{ cowriter.description }}</p>
-      <ul>
-        <li>_id: {{ cowriter._id }}</li>
-        <li>access_token: {{ cowriter.access_token }}</li>
-        <li>refresh_token: {{ cowriter.refresh_token }}</li>
-        <li>city: {{ cowriter.city }}</li>
-        <li>state: {{ cowriter.state }}</li>
-        <li>country: {{ cowriter.country }}</li>
-        <li>user_uri: {{ cowriter.user_uri }}</li>
-        <li>tracks_uri: {{ cowriter.tracks_uri }}</li>
-        <li>permalink_url: {{ cowriter.permalink_url }}</li>
-      </ul>
-    </div>
-    <div class='col-sm-2'>
-      <a ng-href='/#/message/{{user._id}}/{{cowriter._id}}' class='btn btn-default'>Send Message</a>
-    </div>
+    <div class='col-xs-12'>
+      <div class='card clearfix'>
+        <div class='profile-cover-photo'></div>
+        <div class='profile-info text-center'>
+          <img ng-src="{{ cowriter.avatar_url }}">
+          <h3>{{ cowriter.username }}</h3>
+          <p>{{cowriter.city}} {{cowriter.state}}</p>
+          <div class='profile-description'>
+            <p>{{ cowriter.description }}</p>
+          </div>
+          <div class='genres-strengths clearfix'>
+            <div class='col-xs-6'>
+              <h4><small>Genres</small></h4>
+              <ul class='list-inline text-capitalize'>
+                <li ng-repeat='genre in filterGenres(cowriter.genres)'>{{genre}}</li>
+              </ul>
+            </div>
+            <div class='col-xs-6 strengths-list'>
+              <h4><small>Strengths</small></h4>
+              <ul class='list-inline text-capitalize'>
+                <li ng-repeat='(key, value) in cowriter.strengths'>{{key}}: {{value}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class='col-sm-2'>
+            <a ng-href='/#/message/{{user._id}}/{{cowriter._id}}' class='btn btn-default'><i class="fa fa-comment"></i> Send Message</a>
+          </div>
+        </div> <!-- end profile-info -->
+      </div> <!-- end profile-card -->
+    </div> <!-- end profile col -->
+
+    <!-- **************************TRACKS************************** -->
+
+    <div class='col-xs-12'>
+      <div class='card text-center'>
+        <div class='header'>
+          <h3 ng-show='tracks'>{{cowriter.username}} Tracks</h3>
+        </div>
+        <div ng-show='showWidget'>
+          <iframe id="sc-widget" ng-src='{{iframeSrc}}' width="100%" height="100%" scrolling="no" frameborder="no"></iframe>
+        </div>
+        <div class='text-center' ng-hide='notracks || tracks'>
+          <i class="fa fa-5x fa-spinner fa-pulse"></i>
+          <small class='clearfix'>Loading tracks...</small>
+        </div>
+        <p class='alert alert-danger' ng-show='notracks'>
+          You haven't added any songs to SoundCloud. Click to go to
+          <a href='{{ user.permalink_url }}'>
+            SoundCloud profile.
+          </a>
+        </p>
+        <div ng-repeat='track in tracks'>
+          <div>
+            <label><a ng-click='play(track.uri)'><i class="fa fa-play-circle-o"></i> {{ track.title }}</a></label>
+          </div>
+        </div>
+      </div> <!-- end tracks card -->
+    </div> <!-- end tracks col -->
+<!-- **************************END TRACKS************************** -->
   </div>
 </div>

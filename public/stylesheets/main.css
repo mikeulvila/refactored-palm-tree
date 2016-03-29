@@ -10,10 +10,6 @@ div {
   display: block;
 }
 
-.navbar {
-
-}
-
 .card {
   border: 1px solid #d3e0e9;
   border-radius: 5px;
@@ -42,11 +38,15 @@ div {
 .profile-info img {
     max-width: 125px;
     max-height: 125px;
-    margin-top: -70px;
+    margin-top: -50px;
     border: 3px solid #fff;
     border-radius: 100%;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     vertical-align: middle;
+}
+
+.genres-strengths {
+  margin-bottom: 5px;
 }
 
 .strengths-list {
