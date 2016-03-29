@@ -1,47 +1,78 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-sm-6'>
-      <h1>Cowriter</h1>
-      <div ng-repeat='(key, value) in cowriter.genres'>
-        <p>{{key}}:{{value}}</p>
-      </div>
-      <div ng-repeat='(key, value) in cowriter.strengths'>
-        <p>{{key}}:{{value}}</p>
-      </div>
-      <div ng-repeat='track in cowriter.tracks'>
-        <div>
-          <h4><a ng-click="play(track.uri)">title: {{ track.title }}</a></h4>
-          <p>id: {{ track.id }}</p>
-          <p>uri: {{ track.uri }}</p>
-          <p>user_id: {{ track.user_id }}</p>
+    <div class='col-xs-12'>
+      <div class='card text-center clearfix'>
+        <div class='header'>
+          <h3>Find Cowriter</h3>
         </div>
-      </div>
-      <div ng-show='likeMatch' class='alert alert-success'>
-        <p>
-          {{ likeMatch.msg }} Message <a ng-href="/#/message/{{likeMatch.user_id}}/{{likeMatch.cowriter_id}}">{{ likeMatch.cowriterUsername }}</a> or <a ng-href="/#/view-cowriter/{{likeMatch.cowriter_id}}">view their profile.</a>
-        </p>
-      </div>
-      <div ng-show='warning' class='alert alert-warning'><p> {{ warning }} </p></div>
-      <div ng-show='nomore' class='alert alert-info'>
-        <p>You have no more possible cowriters to choose from. Please consider a different career.
-        <a ui-sref="edit-profile">Or just select more genres.</a></p>
-        <a class='btn btn-primary' ui-sref="profile">Return To Profile</a>
-      </div>
-      <div ng-show='likeMatch || warning' class='col-sm-12 text-center'>
-        <button class='btn btn-default' ng-click='next()'>Next -></button>
-      </div>
-      <div ng-hide='likeMatch || warning || nomore'>
-        <div class='col-sm-6 text-center'>
-          <button class='btn btn-default btn-circle' ng-click='next()'><i class="fa fa-2x fa-times"></i></button>
+        <div class='genres-strengths clearfix'>
+          <div class='col-xs-6'>
+            <h4><small>Genres</small></h4>
+            <ul class='list-inline text-capitalize'>
+              <li ng-repeat='genre in filterGenres(cowriter.genres)'>{{genre}}</li>
+            </ul>
+          </div>
+          <div class='col-xs-6 strengths-list'>
+            <h4><small>Strengths</small></h4>
+            <ul class='list-inline text-capitalize'>
+              <li ng-repeat='(key, value) in cowriter.strengths'>{{key}}: {{value}}</li>
+            </ul>
+          </div>
         </div>
-        <div class='col-sm-6 text-center'>
-          <button class='btn btn-default btn-circle' ng-click='like(cowriter._id)'><i class="fa fa-2x fa-heart"></i></button>
+        <div ng-repeat='track in cowriter.tracks'>
+          <div>
+            <label><a ng-click='play(track.uri)'><i class="fa fa-play-circle-o"></i> {{ track.title }}</a></label>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class='col-sm-6'>
-      <iframe id="sc-widget" ng-src='{{iframeSrc}}' width="100%" height="100%" scrolling="no" frameborder="no"></iframe>
-    </div>
+        <div ng-show='checkForTracks' class='alert alert-danger'>
+          <p>This user has not uploaded any songs.</p>
+        </div>
+        <div ng-show='showWidget'>
+          <iframe id="sc-widget" ng-src='{{iframeSrc}}' width="100%" height="100%" scrolling="no" frameborder="no"></iframe>
+        </div>
+
+
+
+      </div> <!-- end find-cowriter card -->
+
+    </div> <!-- end find-cowriter col -->
+                <!-- <div class='col-sm-6'>
+
+
+                  <div ng-repeat='track in cowriter.tracks'>
+                    <div>
+                      <h4><a ng-click="play(track.uri)">title: {{ track.title }}</a></h4>
+                      <p>id: {{ track.id }}</p>
+                      <p>uri: {{ track.uri }}</p>
+                      <p>user_id: {{ track.user_id }}</p>
+                    </div>
+                  </div>
+                  <div ng-show='likeMatch' class='alert alert-success'>
+                    <p>
+                      {{ likeMatch.msg }} Message <a ng-href="/#/message/{{likeMatch.user_id}}/{{likeMatch.cowriter_id}}">{{ likeMatch.cowriterUsername }}</a> or <a ng-href="/#/view-cowriter/{{likeMatch.cowriter_id}}">view their profile.</a>
+                    </p>
+                  </div>
+                  <div ng-show='warning' class='alert alert-warning'><p> {{ warning }} </p></div>
+                  <div ng-show='nomore' class='alert alert-info'>
+                    <p>You have no more possible cowriters to choose from. Please consider a different career.
+                    <a ui-sref="edit-profile">Or just select more genres.</a></p>
+                    <a class='btn btn-primary' ui-sref="profile">Return To Profile</a>
+                  </div>
+                  <div ng-show='likeMatch || warning' class='col-sm-12 text-center'>
+                    <button class='btn btn-default' ng-click='next()'>Next -></button>
+                  </div>
+                  <div ng-hide='likeMatch || warning || nomore'>
+                    <div class='col-sm-6 text-center'>
+                      <button class='btn btn-default btn-circle' ng-click='next()'><i class="fa fa-2x fa-times"></i></button>
+                    </div>
+                    <div class='col-sm-6 text-center'>
+                      <button class='btn btn-default btn-circle' ng-click='like(cowriter._id)'><i class="fa fa-2x fa-heart"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class='col-sm-6'>
+                  <iframe id="sc-widget" ng-src='{{iframeSrc}}' width="100%" height="100%" scrolling="no" frameborder="no"></iframe>
+                </div> -->
   </div>
 </div>
 
