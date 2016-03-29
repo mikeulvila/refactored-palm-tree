@@ -18,6 +18,8 @@ div {
   border: 1px solid #d3e0e9;
   border-radius: 5px;
   box-shadow: 0 1px 1px black;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 .profile-cover-photo {
@@ -30,8 +32,11 @@ div {
   border-top-left-radius: 5px;
 }
 
-.profile-info {
-  padding: 15px;
+.profile-description {
+  padding: 10px 10px;
+  margin: 0 15px 10px;
+  background: rgba(192, 192, 192, 0.3);
+  border-radius: 5px;
 }
 
 .profile-info img {
@@ -46,6 +51,20 @@ div {
 
 .strengths-list {
   border-left: 1px solid #aaa;
+}
+
+.header {
+  height: 50px;
+  padding-top: 10px;
+  margin-bottom: 15px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: black;
+}
+
+.header h3 {
+  color: white;
+  margin: 0;
 }
 
 /*.btn-circle {

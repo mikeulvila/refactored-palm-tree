@@ -7,6 +7,7 @@ angular.module('Capstone')
       $scope.tracks;
       $scope.matches;
       $scope.notracks;
+      $scope.showWidget = false;
 
       User.getUser()
         .then(function(user) {
@@ -44,6 +45,7 @@ angular.module('Capstone')
       };
 
       $scope.play = function (src) {
+        $scope.showWidget = true;
         $scope.iframeSrc = 'https://w.soundcloud.com/player/?auto_play=true&show_user=false&show_artwork=false&url='+src;
       };
 

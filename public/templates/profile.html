@@ -1,14 +1,16 @@
 <div class='container'>
   <div class='row'>
+<!-- **************************PROFILE************************** -->
     <div class='col-xs-12'>
       <div class='card clearfix'>
         <div class='profile-cover-photo'></div>
-
         <div class='profile-info text-center'>
           <img ng-src="{{ user.avatar_url }}">
           <h3>{{ user.username }}</h3>
           <p>{{user.city}} {{user.state}}</p>
-          <p>{{ user.description }}</p>
+          <div class='profile-description'>
+            <p>{{ user.description }}</p>
+          </div>
           <div class='genres-strengths clearfix'>
             <div class='col-xs-6'>
               <h4><small>Genres</small></h4>
@@ -26,43 +28,56 @@
         </div> <!-- end profile-info -->
       </div> <!-- end profile-card -->
     </div> <!-- end profile col -->
-    <div class='col-sm-3'>
-      <h2 ng-show='tracks'>Your Tracks</h2>
-      <div class='text-center' ng-hide='notracks || tracks'>
-        <i class="fa fa-5x fa-spinner fa-pulse"></i>
-        <small class='clearfix'>Loading tracks...</small>
-      </div>
-      <p class='alert alert-danger' ng-show='notracks'>
-        You haven't added any songs to SoundCloud. Click to go to
-        <a href='{{ user.permalink_url }}'>
-          SoundCloud profile.
-        </a>
-      </p>
-      <div ng-repeat='track in tracks'>
-        <div>
-          <h4><a ng-click='play(track.uri)'>title: {{ track.title }}</a></h4>
-          <p>id: {{ track.id }}</p>
-          <p>uri: {{ track.uri }}</p>
-          <p>user_id: {{ track.user_id }}</p>
+<!-- **************************END PROFILE************************** -->
+
+<!-- **************************MATCHES************************** -->
+    <div class='col-xs-12'>
+      <div class='card text-center clearfix'>
+        <div class='header' ng-show='matches'>
+          <h3>Matches</h3>
         </div>
-      </div>
-    </div>
-<!--     <div class='col-sm-3'>
-      <h2 ng-show='matches'>Your Matches</h2>
-      <p class='alert alert-danger' ng-hide='matches'>
-        You have no one who thinks you're good. <a ui-sref="find-cowriter">Find a cowriter.</a>
-      </p>
-      <div ng-repeat='match in matches'>
-        <div>
-          <p> {{ match.username }}
-            <a class='btn btn-primary btn-xs' ng-href="/#/view-cowriter/{{match.id}}">View Profile</a>
-            <a class='btn btn-primary btn-xs' ng-href="/#/message/{{user._id}}/{{match.id}}">Message</a>
-          </p>
+        <p class='alert alert-danger' ng-hide='matches'>
+          You have no one who thinks you're good. <a ui-sref="find-cowriter">Find a cowriter.</a>
+        </p>
+        <div ng-repeat='match in matches'>
+          <div>
+            <p> {{ match.username }}
+              <a class='btn btn-primary btn-xs' ng-href="/#/view-cowriter/{{match.id}}">View Profile</a>
+              <a class='btn btn-primary btn-xs' ng-href="/#/message/{{user._id}}/{{match.id}}">Message</a>
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class='col-sm-3'>
-      <div><iframe id="sc-widget" ng-src='{{iframeSrc}}' width="100%" height="100%" scrolling="no" frameborder="no"></iframe></div>
-    </div> -->
+      </div> <!-- end matches card -->
+    </div> <!-- end matches col -->
+<!-- **************************END MATCHES************************** -->
+
+<!-- **************************TRACKS************************** -->
+
+    <div class='col-xs-12'>
+      <div class='card text-center'>
+        <div class='header'>
+          <h3 ng-show='tracks'>Tracks</h3>
+        </div>
+        <div ng-show='showWidget'>
+          <iframe id="sc-widget" ng-src='{{iframeSrc}}' width="100%" height="100%" scrolling="no" frameborder="no"></iframe>
+        </div>
+        <div class='text-center' ng-hide='notracks || tracks'>
+          <i class="fa fa-5x fa-spinner fa-pulse"></i>
+          <small class='clearfix'>Loading tracks...</small>
+        </div>
+        <p class='alert alert-danger' ng-show='notracks'>
+          You haven't added any songs to SoundCloud. Click to go to
+          <a href='{{ user.permalink_url }}'>
+            SoundCloud profile.
+          </a>
+        </p>
+        <div ng-repeat='track in tracks'>
+          <div>
+            <label><a ng-click='play(track.uri)'><i class="fa fa-play-circle-o"></i> {{ track.title }}</a></label>
+          </div>
+        </div>
+      </div> <!-- end tracks card -->
+    </div> <!-- end tracks col -->
+<!-- **************************END TRACKS************************** -->
   </div>
 </div>
