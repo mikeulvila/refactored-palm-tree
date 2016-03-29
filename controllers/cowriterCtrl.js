@@ -44,6 +44,7 @@ module.exports.likeCowriter = (req, res) => {
         res.json({
           msg: 'You have a match!',
           cowriterUsername: cowriter.username,
+          avatar_url: cowriter.avatar_url,
           cowriter_id: cowriter_id,
           user_id: user_id
         });
