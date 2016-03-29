@@ -32,6 +32,17 @@ angular.module('Capstone')
           $state.go('home');
         });
 
+      // display only true genres
+      $scope.filterGenres = function(genres) {
+          var result = [];
+          angular.forEach(genres, function(value, key) {
+              if (value) {
+                  result.push(key);
+              }
+          });
+          return result;
+      };
+
       $scope.play = function (src) {
         $scope.iframeSrc = 'https://w.soundcloud.com/player/?auto_play=true&show_user=false&show_artwork=false&url='+src;
       };

@@ -1,30 +1,32 @@
 <div class='container'>
   <div class='row'>
     <div class='col-xs-12'>
-      <div class='profile-card'>
+      <div class='card clearfix'>
         <div class='profile-cover-photo'></div>
 
         <div class='profile-info text-center'>
           <img ng-src="{{ user.avatar_url }}">
-          <h4>{{ user.username }}</h4>
+          <h3>{{ user.username }}</h3>
+          <p>{{user.city}} {{user.state}}</p>
           <p>{{ user.description }}</p>
-          <ul>
-            <li>_id: {{ user._id }}</li>
-            <li>access_token: {{ user.access_token }}</li>
-            <li>refresh_token: {{ user.refresh_token }}</li>
-            <li>city: {{ user.city }}</li>
-            <li>state: {{ user.state }}</li>
-            <li>country: {{ user.country }}</li>
-            <li>user_uri: {{ user.user_uri }}</li>
-            <li>tracks_uri: {{ user.tracks_uri }}</li>
-            <li>permalink_url: {{ user.permalink_url }}</li>
-          </ul>
-
+          <div class='genres-strengths clearfix'>
+            <div class='col-xs-6'>
+              <h4><small>Genres</small></h4>
+              <ul class='list-inline text-capitalize'>
+                <li ng-repeat='genre in filterGenres(user.genres)'>{{genre}}</li>
+              </ul>
+            </div>
+            <div class='col-xs-6 strengths-list'>
+              <h4><small>Strengths</small></h4>
+              <ul class='list-inline text-capitalize'>
+                <li ng-repeat='(key, value) in user.strengths'>{{key}}: {{value}}</li>
+              </ul>
+            </div>
+          </div>
         </div> <!-- end profile-info -->
-
       </div> <!-- end profile-card -->
-    </div>
-<!--     <div class='col-sm-3'>
+    </div> <!-- end profile col -->
+    <div class='col-sm-3'>
       <h2 ng-show='tracks'>Your Tracks</h2>
       <div class='text-center' ng-hide='notracks || tracks'>
         <i class="fa fa-5x fa-spinner fa-pulse"></i>
@@ -45,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div class='col-sm-3'>
+<!--     <div class='col-sm-3'>
       <h2 ng-show='matches'>Your Matches</h2>
       <p class='alert alert-danger' ng-hide='matches'>
         You have no one who thinks you're good. <a ui-sref="find-cowriter">Find a cowriter.</a>
