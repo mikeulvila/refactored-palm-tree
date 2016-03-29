@@ -14,4 +14,11 @@ angular.module('Capstone')
           console.log('nav-error>>>>>>', error);
         });
 
+
+        $(".navbar-collapse li a").on('click', function(event) {
+          console.log('clicked nav');
+          $(".navbar-collapse").collapse('hide');
+        });
+
+
 }]);
