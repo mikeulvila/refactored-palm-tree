@@ -16,6 +16,13 @@ angular.module('Capstone')
           console.log(error);
         });
 
+      User.getUser()
+        .then(function(cowriter) {
+          $scope.user = cowriter.data;
+        }).catch(function(error) {
+          console.log(error);
+        });
+
       getMessages();
 
       $scope.text;

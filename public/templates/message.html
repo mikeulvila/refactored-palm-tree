@@ -1,31 +1,49 @@
 <div class='container'>
+
+
   <div class='row'>
-    <div class='col-sm-12'>
-      <h1 ng-show='newMsg'>{{ newMsg.newMsg }} {{ cowriter.username }}</h1>
+    <div ng-show='newMsg'>
+      <h3>{{ newMsg.newMsg }} {{ cowriter.username }}</h3>
+    </div>
+    <div class='text-center' ng-show='message'>
+      <h3>Message with {{ cowriter.username }}</h3>
     </div>
   </div>
-  <div class='row'>
-    <div class='col-sm-6'>
+
+
+
+  <div class='row clearfix'>
+    <div class='col-xs-12'>
+      <div class='message-container' ng-repeat='content in message.content track by $index'>
+        <div ng-class="content.user_id===cowriter._id ? 'message-cowriter' : 'text-right message-user'">
+          {{ content.text }}
+        </div>
+        <div ng-class="content.user_id===cowriter._id ? 'date-cowriter' : 'text-right date-user'">
+          <small>Sent on: {{content.sent_at | date:'yyyy-MM-dd'}}</small>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <footer class='footer navbar navbar-inverse navbar-fixed-bottom'>
+    <div class='container'>
       <form class="form-horizontal" ng-submit="sendMessage(message_id)">
         <div class="form-group">
-          <label for="" class="col-sm-3 control-label">Message:</label>
-          <div class="col-sm-6">
-            <textarea class="form-control" placeholder='Start typing Mr. writer...' ng-model="text"></textarea>
-          </div>
-          <div class='col-sm-3'>
-            <button type='submit' class="btn btn-default">Send</button>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder='Message' ng-model="text">
+            <span class="input-group-btn">
+              <button type='submit' class="btn btn-default">Send</button>
+            </span>
           </div>
         </div>
       </form>
     </div>
-    <div class='col-sm-6'>
-      <div ng-repeat='content in message.content track by $index'>
-        <div ng-class="content.user_id===cowriter._id ? 'bg-danger text-right' : 'bg-primary text-left'">
-          <p>{{ content.text }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </footer>
+
+
 </div>
+
 
 

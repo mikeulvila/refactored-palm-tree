@@ -99,3 +99,39 @@ div {
   border-radius: 50%;
 }
 
+.message-container {
+  margin-bottom: 30px;
+  overflow: visible;
+  vertical-align: top;
+}
+
+.message-user {
+  color: #fff;
+  background-color: #3097d1;
+  max-width: 60%;
+  position: relative;
+  left: 40%;
+  padding: 10px 15px;
+  border-radius: 9px;
+}
+
+.message-cowriter {
+  color: black;
+  background-color: rgba(192, 192, 192, 0.3);
+  max-width: 60%;
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 9px;
+}
+
+.date-user {
+  max-width: 60%;
+  position: relative;
+  left: 40%;
+}
+
+.date-cowriter {
+  max-width: 60%;
+  position: relative;
+}
+
