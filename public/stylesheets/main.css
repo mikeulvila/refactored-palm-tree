@@ -10,6 +10,14 @@ div {
   display: block;
 }
 
+.logo {
+  font-family: 'Handlee', cursive;
+}
+
+.icon-box {
+  color: #FF5500;
+}
+
 .card {
   border: 1px solid #d3e0e9;
   border-radius: 5px;
@@ -21,7 +29,7 @@ div {
 .profile-cover-photo {
   padding: 10px 15px;
   height: 150px;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(../images/cover-photo.jpg) no-repeat center center;
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(../images/cover-photo2.png) no-repeat center center;
   background-size: cover;
   border-bottom: 1px solid transparent;
   border-top-right-radius: 5px;
