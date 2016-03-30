@@ -10,6 +10,23 @@ div {
   display: block;
 }
 
+a {
+  color: #FF5500
+}
+
+a:hover {
+  color: #b23b00;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #FF5500;
+}
+
+.btn-primary:hover {
+  background-color: #b23b00;
+}
+
 .logo {
   font-family: 'Handlee', cursive;
 }
@@ -110,6 +127,19 @@ div {
   padding: 6px 0;
   text-align: center;
   border-radius: 50%;
+}
+
+.message-input {
+  position: relative;
+  padding: 15px;
+}
+
+.message-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
 .message-container {
