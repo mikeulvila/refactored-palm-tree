@@ -20,7 +20,6 @@ angular.module('Capstone')
               if (tracks.data.length === 0) {
                 $scope.checkForTracks = true;
               }
-              console.log('tracks>>>', tracks.data.length)
               $scope.cowriter['tracks'] = tracks.data;
             }).catch(function(error) {
               console.log(error);

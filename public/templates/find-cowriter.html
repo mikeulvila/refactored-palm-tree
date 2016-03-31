@@ -26,6 +26,10 @@
           <p>This user has not uploaded any songs.</p>
         </div>
         <div class='track-card'>
+          <div class='text-center' ng-hide='cowriter.tracks'>
+            <i class="fa fa-5x fa-spinner fa-pulse"></i>
+            <small class='clearfix'>Loading tracks...</small>
+          </div>
           <div ng-repeat='track in cowriter.tracks'>
             <h4><a ng-click='play(track.uri)'><i class="fa fa-play-circle-o"></i> {{ track.title }}</a></h4>
           </div>
