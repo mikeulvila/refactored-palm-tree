@@ -2,7 +2,7 @@ angular.module('Capstone')
   .controller('FindCowriterController', ['$scope', '$state', 'User', 'Cowriter', 'Tracks',
     function($scope, $state, User, Cowriter, Tracks) {
 
-      $scope.nomore;
+      $scope.nomore = false;
       $scope.showWidget = false;
       $scope.checkForTracks = false;
 
@@ -32,7 +32,8 @@ angular.module('Capstone')
       var index = 1;
 
       $scope.next = function() {
-        $scope.likeMatch;
+        $scope.likeMatch = '';
+        $scope.warning = '';
         if (index < maxIndex) {
           $scope.cowriter = cowritersArray[index];
           Tracks.getTracks($scope.cowriter._id)
