@@ -8,6 +8,7 @@ const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 const HOST = process.env.PROD_HOST || 'http://127.0.0.1:3000'
 const CALLBACK_URL = HOST + '/auth/soundcloud/callback';
+
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
     done(null, user._id);
@@ -19,7 +20,6 @@ passport.deserializeUser(function(id, done) {
         done(err, user);
     });
 });
-
 // soundcloud strategy for passport
 passport.use(new SoundCloudStrategy({
     clientID: CLIENT_ID,
