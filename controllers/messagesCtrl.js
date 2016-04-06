@@ -1,3 +1,3 @@
 'use strict';
-// Users model
+// message model
 const Messages = require('../models/Message.js');
