@@ -15,8 +15,11 @@ angular.module('Capstone')
 
               getCowriter: function(cowriter_id) {
                 return $http.get('/api/user/' + cowriter_id);
-              }
+              },
 
+              removeCowriter: function(cowriter_id) {
+                return $http.delete('/api/cowriters/remove/' + cowriter_id);
+              }
 
               // these will work when more API routes are defined on the Node side of things
               // call to POST and create a new nerd

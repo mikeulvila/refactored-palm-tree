@@ -44,6 +44,7 @@
             <p> {{ match.username }}
               <a class='btn btn-primary btn-xs' ng-href="/#/view-cowriter/{{match.id}}">View Profile</a>
               <a class='btn btn-primary btn-xs' ng-href="/#/message/{{user._id}}/{{match.id}}">Message</a>
+              <a class='btn btn-primary btn-xs' ng-click="removeCowriter(match.id)">Remove</a>
             </p>
           </div>
         </div>

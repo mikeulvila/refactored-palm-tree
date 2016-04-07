@@ -1,7 +1,7 @@
 // public/app/controllers/MainCtrl.js
 angular.module('Capstone')
-  .controller('ProfileController', ['$scope', '$state', 'User', 'Tracks',
-    function($scope, $state, User, Tracks) {
+  .controller('ProfileController', ['$scope', '$state', 'User', 'Tracks', 'Cowriter',
+    function($scope, $state, User, Tracks, Cowriter) {
       // $scope variables
       $scope.user;
       $scope.tracks;
@@ -44,9 +44,21 @@ angular.module('Capstone')
           return result;
       };
 
+      $scope.removeCowriter = function(cowriter_id) {
+        console.log('clicked removeCowriter');
+        Cowriter.removeCowriter(cowriter_id)
+          .then(function(response) {
+            console.log('removeCowriter>>>', response);
+          }).catch(function(error) {
+            console.log(error);
+          });
+      };
+
       $scope.play = function (src) {
         $scope.showWidget = true;
         $scope.iframeSrc = 'https://w.soundcloud.com/player/?auto_play=true&show_user=false&show_artwork=false&url='+src;
       };
+
+
 
 }]);

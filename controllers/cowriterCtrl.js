@@ -55,3 +55,21 @@ module.exports.likeCowriter = (req, res) => {
   });
 };
 
+// remove cowriter
+module.exports.removeCowriter = (req, res) => {
+  const cowriter_id = parseInt(req.params.cowriter_id);
+  const user_id = req.user._id;
+  User.findById(user_id, (err, user) => {
+    console.log('user>>>>>', user);
+    if (err) throw err;
+    user.likes.pull(cowriter_id);
+    user.matches.pull(cowriter_id);
+    user.save();
+    User.findById(cowriter_id, (err, cowriter) => {
+      cowriter.matches.pull(user_id);
+      cowriter.save();
+      res.json(user);
+    });
+  });
+};
+
