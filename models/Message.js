@@ -10,7 +10,7 @@ const messageSchema = new Schema({
   content: [{
     user_id: Number,
     text: String,
-    new: {
+    unread: {
         type: Boolean,
         default: true
     },
