@@ -28,6 +28,7 @@ angular.module('Capstone')
           }
           if (user.data.matches.length) {
             $scope.matches = user.data.matches;
+            console.log('matches>>>>', $scope.matches);
           }
         }).catch(function (error) {
           $state.go('home');
