@@ -39,12 +39,12 @@
         <p class='alert alert-danger' ng-hide='matches'>
           You have no one who thinks you're good. <a ui-sref="find-cowriter">Find a cowriter.</a>
         </p>
-        <div ng-repeat='match in matches'>
+        <div ng-repeat='(matchId, matchUsername) in matches'>
           <div>
-            <p> {{ match }}
-              <a class='btn btn-primary btn-xs' ng-href="/#/view-cowriter/{{match}}">View Profile</a>
-              <a class='btn btn-primary btn-xs' ng-href="/#/message/{{user._id}}/{{match}}">Message</a>
-              <a class='btn btn-primary btn-xs' ng-click="removeCowriter(match)">Remove</a>
+            <p> {{ matchUsername }}
+              <a class='btn btn-primary btn-xs' ng-href="/#/view-cowriter/{{matchId}}">View Profile</a>
+              <a class='btn btn-primary btn-xs' ng-href="/#/message/{{user._id}}/{{matchId}}">Message</a>
+              <a class='btn btn-primary btn-xs' ng-click="removeCowriter(matchId)">Remove</a>
             </p>
           </div>
         </div>

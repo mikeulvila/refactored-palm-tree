@@ -21,6 +21,14 @@ module.exports.getUserById = (req, res) => {
   });
 };
 
+module.exports.getUsername = (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err) throw err;
+    console.log('user>>>', user);
+    res.json(user.username);
+  });
+};
+
 module.exports.updateUser = (req, res) => {
   User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, (err, user) => {
     if (err) throw err;

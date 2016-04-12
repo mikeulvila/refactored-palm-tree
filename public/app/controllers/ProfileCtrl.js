@@ -10,8 +10,11 @@ angular.module('Capstone')
       $scope.showWidget = false;
 
       User.getUser()
-        .then(function(user) {
+        .then(function setUserToScope (user) {
           $scope.user = user.data;
+          return user;
+        })
+        .then(function setTracksToScope(user) {
           if (user.data.genres && user.data.strengths) {
             Tracks.getTracks(user.data._id)
               .then(function(tracks) {
@@ -26,11 +29,27 @@ angular.module('Capstone')
           } else {
             $state.go('edit-profile');
           }
-          if (user.data.matches.length) {
-            $scope.matches = user.data.matches;
-            console.log('matches>>>>', $scope.matches);
-          }
-        }).catch(function (error) {
+          return user;
+        })
+        .then(function setUserNames (user) {
+          $scope.user.matches = user.data.matches.reduce(function (matches, matchId) {
+            matches[matchId] = null
+            return matches
+          }, {});
+
+          $scope.matches = {};
+
+          Object.keys(user.data.matches).forEach(function (matchId) {
+            User.getUsername(matchId)
+            .then(function(response) {
+              $scope.matches[matchId] = response.data;
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+          })
+        })
+        .catch(function (error) {
           $state.go('home');
         });
 
@@ -39,7 +58,7 @@ angular.module('Capstone')
           var result = [];
           angular.forEach(genres, function(value, key) {
               if (value) {
-                  result.push(key);
+                result.push(key);
               }
           });
           return result;
