@@ -24,7 +24,7 @@ angular.module('Capstone')
                   $scope.notracks = true;
                 };
               }).catch(function(error) {
-                console.log('getTracks error>>>', error);
+                console.log(error);
               });
           } else {
             $state.go('edit-profile');
@@ -66,7 +66,6 @@ angular.module('Capstone')
 
       $scope.removeCowriter = function(cowriter_id, event) {
         event.currentTarget.parentElement.remove();
-        console.log('removeCowriter event>>>', event);
         Cowriter.removeCowriter(cowriter_id)
           .then(function(response) {
 
