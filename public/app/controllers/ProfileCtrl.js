@@ -64,11 +64,12 @@ angular.module('Capstone')
           return result;
       };
 
-      $scope.removeCowriter = function(cowriter_id) {
-        console.log('clicked removeCowriter');
+      $scope.removeCowriter = function(cowriter_id, event) {
+        event.currentTarget.parentElement.remove();
+        console.log('removeCowriter event>>>', event);
         Cowriter.removeCowriter(cowriter_id)
           .then(function(response) {
-            console.log('removeCowriter>>>', response);
+
           }).catch(function(error) {
             console.log(error);
           });
