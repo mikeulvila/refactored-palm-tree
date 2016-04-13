@@ -32,14 +32,11 @@ angular.module('Capstone')
           return user;
         })
         .then(function setUserNames (user) {
-          $scope.user.matches = user.data.matches.reduce(function (matches, matchId) {
-            matches[matchId] = null
-            return matches
-          }, {});
+
 
           $scope.matches = {};
 
-          Object.keys(user.data.matches).forEach(function (matchId) {
+          user.data.matches.forEach(function (matchId) {
             User.getUsername(matchId)
             .then(function(response) {
               $scope.matches[matchId] = response.data;

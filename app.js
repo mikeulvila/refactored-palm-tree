@@ -15,7 +15,7 @@ const SESS_SECRET = process.env.SESSION_SECRET || 'supersecret';
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379'
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
